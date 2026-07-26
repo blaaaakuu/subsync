@@ -177,6 +177,46 @@ transfer, kernel launch, and result transfer; newly encountered candidates also
 include incremental encoding and upload. Use `--help` to select one backend,
 batch size, or iteration count.
 
+### Portable GPU test package
+
+Windows builds can produce a self-contained CPU/CUDA/OpenCL test ZIP:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass `
+  -File tools/package-gpu-pocket.ps1
+```
+
+The packager builds a static-runtime x64 benchmark with native CUDA kernels for
+compute capabilities 7.5 through 12.1, adds the OpenCL ICD loader, diagnostics,
+licenses, checksums, and quick/full launchers, then writes
+`dist/subsync-gpu-pocket-<version>-win-x64.zip`.
+
+Extract the whole directory on the target machine and run
+`test-this-machine.cmd`. No Python, CUDA SDK, OpenCL SDK, administrator access,
+or installation is required. CUDA and OpenCL still need compatible vendor GPU
+drivers on the target machine. Each run saves a shareable machine and benchmark
+report under `results`.
+
+### Full portable Windows application
+
+The complete GUI and CLI application can also be frozen into a portable ZIP:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass `
+  -File tools/package-windows-full-portable.ps1
+```
+
+This workflow pins FFmpeg 6.1.1 through a vcpkg manifest, builds PocketSphinx
+5.1.1, creates an isolated Python 3.13 environment, builds the CUDA/OpenCL
+`gizmo` extension, and freezes `subsync.exe` and `subsync-cmd.exe` with
+PyInstaller. It also includes the FFmpeg/PocketSphinx/OpenCL runtime DLLs and a
+ready-to-use English speech model.
+
+The output is `dist/subsync-<version>-portable-win-x64.zip`. Extract the whole
+directory and run `subsync.exe`; settings and downloaded assets remain inside
+that directory. Target machines need 64-bit Windows 10 or 11. GPU SDKs are not
+required, although CUDA and OpenCL still require compatible vendor drivers.
+
 ## Web build
 
 The web client uses Node.js 22 or newer and the official Emscripten SDK

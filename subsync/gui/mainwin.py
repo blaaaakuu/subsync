@@ -8,6 +8,7 @@ from subsync.gui.aboutwin import AboutWin
 from subsync.gui.components import assetsdlg
 from subsync.gui.busydlg import BusyDlg
 from subsync.gui.errorwin import error_dlg, showExceptionDlg
+from subsync.gui.controlvalue import boundedInt
 from subsync.synchro import SyncTask
 from subsync.assets import assetManager
 from subsync import img, validator, config, loggercfg
@@ -68,7 +69,10 @@ class MainWin(subsync.gui.layout.mainwin.MainWin):
             self.m_panelSub.setStream(task.sub)
             self.m_panelRef.setStream(task.ref)
 
-        self.m_sliderMaxDist.SetValue(settings().windowSize / 60.0)
+        self.m_sliderMaxDist.SetValue(boundedInt(
+            settings().windowSize / 60.0,
+            self.m_sliderMaxDist.GetMin(),
+            self.m_sliderMaxDist.GetMax()))
         self.onSliderMaxDistScroll(None)
 
         self.Fit()

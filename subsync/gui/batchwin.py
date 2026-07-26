@@ -6,6 +6,7 @@ from subsync.gui.components import assetsdlg, filedlg, filedrop
 from subsync.gui.components.thread import gui_thread
 from subsync.gui.components.update import update_lock
 from subsync.gui.errorwin import error_dlg, showExceptionDlg
+from subsync.gui.controlvalue import boundedInt
 from subsync.synchro import SyncController, SyncTaskList, SyncJobResult
 from subsync.settings import settings
 from subsync import img, validator, utils
@@ -26,8 +27,14 @@ class BatchWin(subsync.gui.layout.batchwin.BatchWin):
         self.m_buttonMaxDistInfo.message = descriptions.maxDistInfo
         self.m_buttonEffortInfo.message = descriptions.effortInfo
 
-        self.m_sliderMaxDist.SetValue(settings().windowSize / 60)
-        self.m_sliderEffort.SetValue(settings().minEffort * 100)
+        self.m_sliderMaxDist.SetValue(boundedInt(
+            settings().windowSize / 60,
+            self.m_sliderMaxDist.GetMin(),
+            self.m_sliderMaxDist.GetMax()))
+        self.m_sliderEffort.SetValue(boundedInt(
+            settings().minEffort * 100,
+            self.m_sliderEffort.GetMin(),
+            self.m_sliderEffort.GetMax()))
         self.onSliderMaxDistScroll(None)
         self.onSliderEffortScroll(None)
 
@@ -187,8 +194,10 @@ class BatchWin(subsync.gui.layout.batchwin.BatchWin):
             effort = settings().minEffort
             if effort:
                 progress = min(max(progress, status.effort / effort, 0), 1)
-        self.m_gaugeCurrentProgress.SetValue(100 * progress)
-        self.m_gaugeTotalProgress.SetValue(100 * (no + progress))
+        self.m_gaugeCurrentProgress.SetValue(boundedInt(
+            100 * progress, 0, self.m_gaugeCurrentProgress.GetRange()))
+        self.m_gaugeTotalProgress.SetValue(boundedInt(
+            100 * (no + progress), 0, self.m_gaugeTotalProgress.GetRange()))
 
         if self.sync.isRunning():
             self.updateProgressText(no, progress)

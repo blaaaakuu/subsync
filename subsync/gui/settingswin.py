@@ -56,7 +56,7 @@ class SettingsWin(subsync.gui.layout.settingswin.SettingsWin):
         self.m_checkAutoJobsNo.SetValue(jobsNo == None)
         self.m_jobsNo.Enable(jobsNo != None)
 
-        logLevel = self.settings.logLevel / 10
+        logLevel = int(self.settings.logLevel / 10)
         if logLevel >= 0 and logLevel < self.m_choiceLogLevel.GetCount():
             self.m_choiceLogLevel.SetSelection(logLevel)
 

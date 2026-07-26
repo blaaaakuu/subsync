@@ -7,6 +7,7 @@ from subsync.gui import errorwin
 from subsync.gui import busydlg
 from subsync.gui import suspendlock
 from subsync.gui.components.thread import gui_thread
+from subsync.gui.controlvalue import boundedInt
 from subsync.data import filetypes, languages
 from subsync import subtitle
 from subsync.settings import settings
@@ -72,7 +73,8 @@ class SyncWin(subsync.gui.layout.syncwin.SyncWin):
         if finished:
             self.m_gaugeProgress.SetValue(100)
         else:
-            self.m_gaugeProgress.SetValue(100 * status.progress)
+            self.m_gaugeProgress.SetValue(boundedInt(
+                100 * status.progress, 0, self.m_gaugeProgress.GetRange()))
 
         if status.correlated and not self.m_bitmapTick.IsShown():
             self.m_bitmapCross.Hide()

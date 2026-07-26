@@ -1,5 +1,4 @@
 *.pyc
 *_layout.py
-version.py
 /build
 /dist

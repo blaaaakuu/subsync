@@ -1,0 +1,19 @@
+{
+  "name": "subsync-portable-native",
+  "version-string": "0.18.0.dev0",
+  "builtin-baseline": "5a58e645cefaae63d149ff50fc1ca1ec54c47a77",
+  "dependencies": [
+    {
+      "name": "ffmpeg",
+      "default-features": true,
+      "features": [
+        "iconv"
+      ]
+    },
+    "opencl",
+    {
+      "name": "pkgconf",
+      "host": true
+    }
+  ]
+}
