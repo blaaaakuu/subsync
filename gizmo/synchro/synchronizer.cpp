@@ -1,8 +1,10 @@
 #include "synchronizer.h"
 #include "text/translator.h"
 #include "general/logger.h"
+#include <cfloat>
 #include <sstream>
 #include <iomanip>
+#include <vector>
 
 using namespace std;
 
@@ -34,8 +36,12 @@ Synchronizer::Synchronizer(
 		double minCorrelation,
 		float maxDistance,
 		unsigned minPointsNo,
-		float minWordsSim) :
+		float minWordsSim,
+		const string &matchingBackend,
+		unsigned gpuMinBatch) :
 	m_lineFinder(5.0f, windowSize),
+	m_wordMatcher(createWordMatcher(
+				parseMatchingBackend(matchingBackend), gpuMinBatch)),
 	m_windowSize(windowSize),
 	m_minCorrelation(minCorrelation),
 	m_maxDistanceSqr(maxDistance * maxDistance),
@@ -49,19 +55,19 @@ bool Synchronizer::addSubWord(const Word &sub)
 	m_subs.insert(sub);
 
 	auto first = m_refs.lower_bound(Word(sub.time - m_windowSize, 0.0f, 0.0f));
-	auto last  = m_refs.upper_bound(Word(sub.time + m_windowSize, 0.0f, 1.0f));
-	if (first == m_refs.end())
-		first = m_refs.begin();
+	auto last  = m_refs.upper_bound(
+			Word(sub.time + m_windowSize, FLT_MAX, FLT_MAX));
 
 	bool newBestLine = false;
-
+	vector<const Word*> candidates;
 	for (auto ref = first; ref != last; ++ref)
+		candidates.push_back(&*ref);
+
+	for (size_t match : m_wordMatcher->findMatches(
+				sub.text, candidates, m_minWordsSim))
 	{
-		float sim = compareWords(sub.text, ref->text);// * sub.score * ref->score;
-		if (sim >= m_minWordsSim)
-		{
-			newBestLine |= m_lineFinder.addPoint(sub.time, ref->time);
-		}
+		newBestLine |= m_lineFinder.addPoint(
+				sub.time, candidates[match]->time);
 	}
 
 	return newBestLine;
@@ -72,19 +78,19 @@ bool Synchronizer::addRefWord(const Word &ref)
 	m_refs.insert(ref);
 
 	auto first = m_subs.lower_bound(Word(ref.time - m_windowSize, 0.0f, 0.0f));
-	auto last  = m_subs.upper_bound(Word(ref.time + m_windowSize, 0.0f, 1.0f));
-	if (first == m_subs.end())
-		first = m_subs.begin();
+	auto last  = m_subs.upper_bound(
+			Word(ref.time + m_windowSize, FLT_MAX, FLT_MAX));
 
 	bool newBestLine = false;
-
+	vector<const Word*> candidates;
 	for (auto sub = first; sub != last; ++sub)
+		candidates.push_back(&*sub);
+
+	for (size_t match : m_wordMatcher->findMatches(
+				ref.text, candidates, m_minWordsSim))
 	{
-		float sim = compareWords(ref.text, sub->text);// * ref.score * sub->score;
-		if (sim >= m_minWordsSim)
-		{
-			newBestLine |= m_lineFinder.addPoint(sub->time, ref.time);
-		}
+		newBestLine |= m_lineFinder.addPoint(
+				candidates[match]->time, ref.time);
 	}
 
 	return newBestLine;
@@ -169,4 +175,9 @@ Points Synchronizer::getUsedPoints() const
 	const CorrelationStats stats = correlate();
 	const Line line(stats.formula.a, stats.formula.b);
 	return line.getPointsInLine(m_lineFinder.getPoints(), m_maxDistanceSqr);
+}
+
+const char *Synchronizer::getMatchingBackend() const
+{
+	return m_wordMatcher->backendName();
 }

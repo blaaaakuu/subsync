@@ -32,6 +32,7 @@ class SettingsWin(subsync.gui.layout.settingswin.SettingsWin):
             self.m_autoUpdate.Hide()
             self.m_askForUpdate.Hide()
 
+        self._addMatchingBackendControls()
         self.setSettings(settings())
 
         self.m_panelSynchro.Fit()
@@ -41,6 +42,8 @@ class SettingsWin(subsync.gui.layout.settingswin.SettingsWin):
         self.settings = Settings(settings)
 
         self.m_jobsNo.SetValue(settings.getJobsNo())
+        self.m_matchingBackendChoice.SetStringSelection(
+                settings.matchingBackend)
 
         for field, key, val in self.settingsFieldsGen():
             if val != None:
@@ -71,6 +74,9 @@ class SettingsWin(subsync.gui.layout.settingswin.SettingsWin):
     def getSettings(self):
         for field, key, val in self.settingsFieldsGen():
             setattr(self.settings, key, field.GetValue())
+
+        self.settings.matchingBackend = (
+                self.m_matchingBackendChoice.GetStringSelection())
 
         self.settings.appendLangCode = False
         if self.m_appendLangCode2.IsChecked():
@@ -103,6 +109,44 @@ class SettingsWin(subsync.gui.layout.settingswin.SettingsWin):
             field = 'm_' + key
             if hasattr(self, field):
                 yield getattr(self, field), key, self.settings.get(key)
+
+    def _addMatchingBackendControls(self):
+        sizer = self.m_panelSynchro.GetSizer()
+
+        backendLabel = wx.StaticText(
+                self.m_panelSynchro, label=_('Matching backend:'))
+        self.m_matchingBackendChoice = wx.Choice(
+                self.m_panelSynchro,
+                choices=['auto', 'cpu', 'cuda', 'opencl'])
+        self.m_matchingBackendChoice.SetToolTip(
+                descriptions.cmdopts['options.matchingBackend'])
+        sizer.Add(
+                backendLabel,
+                wx.GBPosition(9, 0),
+                flag=wx.ALL | wx.ALIGN_RIGHT | wx.ALIGN_CENTER_VERTICAL,
+                border=5)
+        sizer.Add(
+                self.m_matchingBackendChoice,
+                wx.GBPosition(9, 1),
+                flag=wx.ALL | wx.EXPAND | wx.ALIGN_CENTER_VERTICAL,
+                border=5)
+
+        batchLabel = wx.StaticText(
+                self.m_panelSynchro, label=_('GPU minimum batch:'))
+        self.m_gpuMinBatch = wx.SpinCtrl(
+                self.m_panelSynchro, min=1, max=10000000, initial=8192)
+        self.m_gpuMinBatch.SetToolTip(
+                descriptions.cmdopts['options.gpuMinBatch'])
+        sizer.Add(
+                batchLabel,
+                wx.GBPosition(10, 0),
+                flag=wx.ALL | wx.ALIGN_RIGHT | wx.ALIGN_CENTER_VERTICAL,
+                border=5)
+        sizer.Add(
+                self.m_gpuMinBatch,
+                wx.GBPosition(10, 1),
+                flag=wx.ALL | wx.EXPAND | wx.ALIGN_CENTER_VERTICAL,
+                border=5)
 
     def onAppendLangCode2Check(self, event):
         if self.m_appendLangCode2.IsChecked():

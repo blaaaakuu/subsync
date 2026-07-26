@@ -71,7 +71,11 @@ class Synchronizer(object):
                 options['minCorrelation'],
                 options['maxPointDist'],
                 options['minPointsNo'],
-                options['minWordsSim'])
+                options['minWordsSim'],
+                options.get('matchingBackend', 'auto'),
+                options.get('gpuMinBatch', 8192))
+        logger.info('word matching backend: %s',
+                self.correlator.getMatchingBackend())
         self.correlator.connectStatsCallback(self.onStatsUpdate)
         self.refWordsSink = self.correlator.pushRefWord
         self.subtitlesCollector = subtitle.SubtitlesCollector()

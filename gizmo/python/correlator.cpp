@@ -5,6 +5,7 @@
 #include <tuple>
 
 #include "correlator.h"
+#include "match/wordmatcher.h"
 #include "math/line.h"
 
 namespace py = pybind11;
@@ -16,17 +17,24 @@ static PointsList convertPointsList(const Points &pts);
 
 void initCorrelatorWrapper(py::module &m)
 {
+	m.def("availableMatchingBackends", &availableMatchingBackends,
+			"Return word matching backends compiled into this build.");
+
 	/*** class Correlator ***/
 	py::class_<Correlator> correlator(m, "Correlator");
-	correlator.def(py::init<float, double, float, unsigned, float>(),
+	correlator.def(py::init<float, double, float, unsigned, float,
+				const std::string&, unsigned>(),
 			py::arg("windowSize"), py::arg("minCorrelation"),
-			py::arg("maxDist"), py::arg("minPointsNo"), py::arg("minWordsSim"));
+			py::arg("maxDist"), py::arg("minPointsNo"), py::arg("minWordsSim"),
+			py::arg("matchingBackend") = "auto",
+			py::arg("gpuMinBatch") = 8192);
 	correlator.def("connectStatsCallback", &Correlator::connectStatsCallback);
 	correlator.def("start", &Correlator::start, py::arg("threadName") = "");
 	correlator.def("stop", &Correlator::stop, py::arg("force") = false);
 	correlator.def("wait", &Correlator::wait);
 	correlator.def("isRunning", &Correlator::isRunning);
 	correlator.def("getProgress", &Correlator::getProgress);
+	correlator.def("getMatchingBackend", &Correlator::getMatchingBackend);
 	correlator.def("pushSubWord", &Correlator::pushSubWord);
 	correlator.def("pushRefWord", &Correlator::pushRefWord);
 	correlator.def("pushSubtitle", &Correlator::pushSubtitle);

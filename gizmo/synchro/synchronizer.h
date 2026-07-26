@@ -4,7 +4,10 @@
 #include "text/words.h"
 #include "math/line.h"
 #include "math/linefinder.h"
+#include "match/wordmatcher.h"
+#include <memory>
 #include <set>
+#include <string>
 #include <cmath>
 #include <climits>
 
@@ -36,7 +39,9 @@ class Synchronizer
 				double   minCorrelation = 0.0,
 				float    maxDistance    = HUGE_VALF,
 				unsigned minPointsNo    = 0,
-				float    minWordsSim    = 0.5);
+				float    minWordsSim    = 0.5,
+				const std::string &matchingBackend = "auto",
+				unsigned gpuMinBatch = 8192);
 
 		bool addSubWord(const Word &word);
 		bool addRefWord(const Word &word);
@@ -49,6 +54,7 @@ class Synchronizer
 
 		const Points &getAllPoints() const;
 		Points getUsedPoints() const;
+		const char *getMatchingBackend() const;
 
 	private:
 		unsigned countBuckets(const Points &pts, unsigned limit=UINT_MAX) const;
@@ -59,6 +65,7 @@ class Synchronizer
 		Buckets m_buckets;
 
 		LineFinder m_lineFinder;
+		std::unique_ptr<WordMatcher> m_wordMatcher;
 
 		const float    m_windowSize;
 		const double   m_minCorrelation;

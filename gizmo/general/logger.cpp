@@ -1,6 +1,6 @@
 #include "logger.h"
 #include "text/utf8.h"
-#include <sphinxbase/err.h>
+#include <pocketsphinx/err.h>
 #include <string>
 #include <cstdarg>
 

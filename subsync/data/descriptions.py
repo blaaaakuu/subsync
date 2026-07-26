@@ -87,6 +87,8 @@ cmdopts = {
 'options.minWordLen':      minWordLenInfo,
 'options.minCorrelation':  minCorrelationInfo,
 'options.minWordsSim':     minWordSimInfo,
+'options.matchingBackend': _('word matching backend; auto selects an available GPU for large batches'),
+'options.gpuMinBatch':      _('minimum candidate count before auto mode uses a GPU'),
 'options.outTimeOffset':   outTimeOffset,
 
 'options.logLevel':        _('set logging level'),

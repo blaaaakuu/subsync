@@ -235,6 +235,9 @@ def options():
         { 'group': 'options', 'name': 'min-word-len',    'type': int },
         { 'group': 'options', 'name': 'min-correlation', 'type': float, 'metavar': 'COR' },
         { 'group': 'options', 'name': 'min-words-sim',   'type': float },
+        { 'group': 'options', 'name': 'matching-backend', 'parser': parseEnum,
+            'values': ['auto', 'cpu', 'cuda', 'opencl'] },
+        { 'group': 'options', 'name': 'gpu-min-batch',   'type': int },
         { 'group': 'options', 'name': 'out-time-offset', 'type': float },
 
         _('Debug options:'),

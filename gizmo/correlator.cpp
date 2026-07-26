@@ -18,10 +18,13 @@ Correlator::Correlator(
 		double minCorrelation,
 		float maxDistance,
 		unsigned minPointsNo,
-		float minWordsSim) :
+		float minWordsSim,
+		const string &matchingBackend,
+		unsigned gpuMinBatch) :
 	m_state(State::idle),
 	m_wordsNo(0),
-	m_sync(windowSize, minCorrelation, maxDistance, minPointsNo, minWordsSim)
+	m_sync(windowSize, minCorrelation, maxDistance, minPointsNo, minWordsSim,
+			matchingBackend, gpuMinBatch)
 {
 }
 
@@ -138,6 +141,11 @@ float Correlator::getProgress() const
 	size_t waiting = m_queue.size();
 	size_t sum = added + waiting;
 	return sum > 0 ? (float) added / (float) sum : 0.0;
+}
+
+const char *Correlator::getMatchingBackend() const
+{
+	return m_sync.getMatchingBackend();
 }
 
 void Correlator::connectStatsCallback(StatsCallback callback)

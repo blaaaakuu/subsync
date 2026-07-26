@@ -17,7 +17,7 @@ GUI_SRC = \
 GUI_DST = $(GUI_SRC:.fbp=.py)
 
 
-all: gui-gen config.py version.py
+all: gui-gen version.py
 
 clean: gui-gen-clean version-clean
 
@@ -30,9 +30,6 @@ gui-gen-clean:
 $(GUI_DST): %.py: %.fbp
 	$(WXFORMBUILDER) -g $<
 	$(PYTHON_PREFIX) ../tools/remove_gettext.py $@
-
-config.py:
-	cp config.py.template $@
 
 version.py: .FORCE
 	$(PYTHON_PREFIX) ../tools/update_version.py $@

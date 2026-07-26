@@ -1,139 +1,194 @@
-# SubSync installation
-You could download release builds from [download page](https://sc0ty.github.io/subsync/en/download.html).
+# Building SubSync
 
-## Prerequisites
-- C++11 compatible compiler (or better C++14);
-- pybind11;
-- ffmpeg libraries (4.0 or newer);
-- sphinxbase and pocketsphinx;
-- Python interpreter (supporting Python 3.5 or newer);
-- Python modules listed in `requirements.txt` file;
+SubSync now uses a PEP 517/scikit-build-core build backed by CMake. The
+supported baseline is:
 
-## Configuration
-SubSync expects to find configuration in `config.py` file. You could use default from `config.py.template` and modify it if needed:
-```
-cp subsync/config.py.template subsync/config.py
-```
+- Python 3.10 or newer;
+- a C++17 compiler and CMake 3.25 or newer;
+- FFmpeg 6.1 development libraries;
+- PocketSphinx 5.1 or newer within the 5.x API line;
+- pkg-config (or pkgconf) so CMake can locate FFmpeg and PocketSphinx.
 
-## POSIX platforms
-For POSIX compatibile platforms (e.g. Linux, MacOS), standard Python `setup.py` scripts are provided.
+The Python dependencies are declared in `pyproject.toml`. `requirements.txt`
+contains the same runtime-only dependency set for tools that still consume a
+requirements file.
 
-It is advised to build under Python virtual environment. To do that, go to project main directory and type:
-```
-pip install venv
-python -m venv .env
-```
-You could also specify different version of Python interpreter, for details see [the docs](https://docs.python.org/3/library/venv.html).
+## CPU build
 
-Activate your virtual environment:
-```
-source .env/bin/activate
+Create and activate a virtual environment, then build an editable development
+install:
+
+```sh
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e ".[gui,dev]"
 ```
 
-If you have ffmpeg, sphinxbase and pocketsphinx libraries installed and avaiable via `pkg-config`, it will be configured automatically. Otherwise, you must provide paths to these libraries manually, using evironment variables:
-```
-export FFMPEG_DIR=PATH
-export SPHINXBASE_DIR=PATH
-export POCKETSPHINX_DIR=PATH
-export USE_PKG_CONFIG=no
+On Windows PowerShell, activate it with:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-Install GUI version:
-```
-pip install '.[GUI]'
-```
-If during this step wxPython fails to compile, you could try to find prebuild version for your system [here](https://extras.wxpython.org/wxPython4/extras/).
+For a headless installation, omit the `gui` extra:
 
-To install headless version only (without GUI):
-```
-pip install .
+```sh
+python -m pip install .
 ```
 
-Run SubSync from your virtual environment:
-```
-./bin/subsync
+## CUDA backend
+
+Install an NVIDIA CUDA toolkit supported by your compiler and driver, then
+enable the backend through scikit-build-core:
+
+```sh
+python -m pip install . \
+  --config-settings=cmake.define.SUBSYNC_ENABLE_CUDA=ON
 ```
 
-### MacOS installer
-MacOS binary distribution and installer are generated using pyinstaller utility.
-```
-pip install pyinstaller
-pyinstaller macos.spec
+CUDA is compiled into the extension only when this option is enabled. At
+runtime, select it explicitly with `--matching-backend=cuda`, or use the
+default `auto` mode.
+
+## OpenCL backend
+
+Install OpenCL headers plus an ICD loader/development package, then build with:
+
+```sh
+python -m pip install . \
+  --config-settings=cmake.define.SUBSYNC_ENABLE_OPENCL=ON
 ```
 
-To create dmg installer, you need to have [create-dmg](https://github.com/andreyvit/create-dmg) in your path:
-```
-./tools/package-macos.sh
+To compile both accelerator backends:
+
+```sh
+python -m pip install . \
+  --config-settings=cmake.define.SUBSYNC_ENABLE_CUDA=ON \
+  --config-settings=cmake.define.SUBSYNC_ENABLE_OPENCL=ON
 ```
 
-## Windows
-Building Windows version under virtual environment is similar to building POSIX version. You need a [Python runtime](https://www.python.org/downloads/windows/), then you could setup and activate virtual environment:
-```
-python -m pip install venv
-python -m venv .env
-.env\Scripts\activate.bat
+The OpenCL implementation targets the portable OpenCL 1.2 API and runs on
+modern OpenCL 3.x drivers. It currently selects the first GPU device exposed
+by the installed ICD.
+
+## Runtime selection
+
+The available modes are:
+
+- `auto`: prefer CUDA, then OpenCL, and fall back to CPU;
+- `cpu`: always use the reference CPU matcher;
+- `cuda`: require a compiled, usable CUDA backend;
+- `opencl`: require a compiled, usable OpenCL backend.
+
+The same backend and batch threshold controls are available on the GUI's
+Synchronization settings page.
+
+In `auto` mode, small batches stay on the CPU because transfer and kernel
+launch overhead would outweigh useful GPU work. The conservative default
+crossover is 8,192 candidates and can be changed with `--gpu-min-batch`:
+
+```sh
+subsync-cmd --matching-backend=auto --gpu-min-batch=16384 ...
 ```
 
-To build subsync, you need to provide dependencies first.
-Sphinxbase and pocketsphinx are published with Visual Studio solution file, which is [easy to use](https://github.com/cmusphinx/pocketsphinx#ms-windows-ms-visual-studio-2012-or-newer---we-test-with-vc-2012-express).
-Building ffmpeg on the other hand is not that easy. You could use [official build](https://ffmpeg.zeranoe.com/builds/) instead.
+An explicit `cuda` or `opencl` selection fails early if that backend was not
+compiled or no compatible device is available. `auto` remains usable if a
+driver fails during matching by dropping back to CPU.
 
-Configure dependencies paths:
-```
-set FFMPEG_DIR=d:\projects\ffmpeg
-set SPHINXBASE_DIR=d:\projects\sphinxbase
-set POCKETSPHINX_DIR=d:\projects\pocketsphinx
-set USE_PKG_CONFIG=no
+You can inspect the backends compiled into the extension:
+
+```sh
+python -c "import gizmo; print(gizmo.availableMatchingBackends())"
 ```
 
-Install GUI version:
-```
-pip install .[GUI]
+## Native dependency discovery
+
+On Linux and macOS, install development packages through the platform package
+manager and verify they are visible:
+
+```sh
+pkg-config --modversion pocketsphinx
+pkg-config --modversion libavcodec
 ```
 
-To install headless version only (without GUI):
-```
-pip install .
+On Windows, a package manager such as vcpkg can provide the native libraries.
+Configure `PKG_CONFIG_PATH` to point at the selected vcpkg triplet's
+`lib/pkgconfig` directory before invoking `pip`.
+
+This source line deliberately targets FFmpeg 6.1 ABI versions. FFmpeg 7 and 8
+removed legacy channel-layout fields still used by the media pipeline; moving
+to them requires a separate decoder/resampler API migration rather than an
+unsafe version-only bump.
+
+## Tests
+
+The pure C++ matcher and geometry tests live under `gizmo/test`:
+
+```sh
+make -C gizmo/test
 ```
 
-Run SubSync from your virtual environment:
-```
-python bin\subsync
+Builds with CUDA or OpenCL should run the same matcher parity cases on a host
+with the corresponding SDK and hardware. WebAssembly remains CPU-only because
+browser WebAssembly cannot access native CUDA or OpenCL runtimes.
+
+## Standalone matcher benchmark
+
+The matcher can be built and benchmarked without Python, FFmpeg, PocketSphinx,
+or pkg-config. This is the quickest way to validate an accelerator toolchain
+and measure whether transfer overhead is worthwhile on a particular device.
+
+For an OpenCL build using vcpkg on Windows:
+
+```powershell
+cmake --fresh -S . -B build/benchmark-opencl `
+  -G "Visual Studio 16 2019" -A x64 `
+  -DSUBSYNC_BUILD_APP=OFF `
+  -DSUBSYNC_BUILD_MATCHER_BENCHMARK=ON `
+  -DSUBSYNC_ENABLE_CUDA=OFF `
+  -DSUBSYNC_ENABLE_OPENCL=ON `
+  -DCMAKE_TOOLCHAIN_FILE=C:/path/to/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+cmake --build build/benchmark-opencl --config Release
+.\build\benchmark-opencl\Release\subsync-matcher-benchmark.exe
 ```
 
-### Windows installer
-Windows binary distribution and installer are generated using pyinstaller utility.
-```
-pip install pyinstaller
-pyinstaller windows.spec
+For CUDA, replace the backend definitions with:
+
+```powershell
+-T "cuda=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.3" `
+-DSUBSYNC_ENABLE_CUDA=ON `
+-DSUBSYNC_ENABLE_OPENCL=OFF `
+-DCMAKE_CUDA_ARCHITECTURES=120
 ```
 
-To create msi installer, you need to have [WIX Toolset](https://wixtoolset.org) in your path:
-```
-tools\package-windows.cmd
+The `-T cuda=...` field points a Visual Studio generator at a standalone CUDA
+toolkit and its bundled MSBuild integration files. It is required when `nvcc`
+is installed but the CUDA `.props` and `.targets` files were not registered in
+Visual Studio's global `BuildCustomizations` directory.
+
+The benchmark verifies each accelerator's results against the CPU matcher,
+including a Unicode case, before timing it. By default it reports steady-state
+median and p95 latency for batches from 128 through 65,536 candidates. Its
+parity check and warm-up calls populate the persistent candidate cache before
+measurement. Timed calls still include query encoding, span construction and
+transfer, kernel launch, and result transfer; newly encountered candidates also
+include incremental encoding and upload. Use `--help` to select one backend,
+batch size, or iteration count.
+
+## Web build
+
+The web client uses Node.js 22 or newer and the official Emscripten SDK
+container. On a POSIX Docker host:
+
+```sh
+cd web
+npm install
+npm run native:build
+npm run build
 ```
 
-To create portable version, you need [7-Zip](https://www.7-zip.org) in your path:
-```
-tools\package-windows-portable.cmd
-```
-
-## Ubuntu SNAP
-Technically [snaps](https://snapcraft.io) are universal linux packages, but it looks like they are really fully supported only on Ubuntu.
-
-To build one, just type `snapcraft` in the project main directory.
-Thats it, no need to prepare virtual envirnoment, installing dependencies etc. Everything needed will be downloaded and built automatically.
-
-If process fails with message `ERROR: Failed building wheel for subsync`, try this workaround before `snapcraft`:
-```
-echo "[build_ext]" >> setup.cfg
-echo "include_dirs=$PWD/stage/include/python3.5m" >> setup.cfg
-```
-
-## Running without installation
-To simplify development, SubSync can be run without main module installation.
-```
-pip install -r requirements
-python setup.py install
-python run.py
-```
+`native:build` fetches pinned FFmpeg 6.1.6 and PocketSphinx 5.1.1 sources,
+builds the CPU-only WebAssembly modules, and leaves CUDA/OpenCL out of the
+browser target.

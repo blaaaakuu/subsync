@@ -11,7 +11,7 @@ CXXFLAGS += \
 			-Wextra \
 			-pedantic \
 			-fPIC \
-			-std=c++14 \
+			-std=c++17 \
 			-fvisibility=hidden \
 			-I.. \
 
@@ -27,6 +27,10 @@ SOURCES = \
 		  ngrams.cpp \
 		  line.cpp \
 		  linefinder.cpp \
+		  matcher.cpp \
+		  ../match/wordmatcher.cpp \
+		  ../synchro/synchronizer.cpp \
+		  ../text/dictionary.cpp \
 		  ../text/words.cpp \
 		  ../text/utf8.cpp \
 		  ../text/ssa.cpp \
@@ -45,6 +49,9 @@ HEADERS = \
 		  ../math/point.h \
 		  ../math/line.h \
 		  ../math/linefinder.h \
+		  ../match/wordmatcher.h \
+		  ../synchro/synchronizer.h \
+		  ../text/dictionary.h \
 		  ../general/notifier.h \
 
 OBJDIR = obj/test

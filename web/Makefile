@@ -6,7 +6,8 @@ TARGETS_DIR = $(abspath scripts)
 DEPS_DIR    = $(abspath deps)
 OBJ_DIR     = $(abspath obj)
 GIZMO_DIR   = $(abspath ../gizmo)
-MODUELS_DIR = $(abspath node_modules)
+NATIVE_DIR  = $(abspath native)
+POCKET_BUILD = $(OBJ_DIR)/pocketsphinx-build
 
 EXTRACTOR_TARGET  = $(TARGETS_DIR)/extractor.js
 CORRELATOR_TARGET = $(TARGETS_DIR)/correlator.js
@@ -17,7 +18,6 @@ TARGETS = \
 
 EXTRACTOR_DEPS   = \
 		 $(DEPS_DIR)/lib/libavcodec.a \
-		 $(DEPS_DIR)/lib/libsphinxbase.a \
 		 $(DEPS_DIR)/lib/libpocketsphinx.a \
 
 CXXFLAGS += \
@@ -25,30 +25,25 @@ CXXFLAGS += \
 			-Wall \
 			-Wextra \
 			-pedantic \
-			-std=c++14 \
+			-std=c++17 \
 			-fvisibility=hidden \
 			-I$(GIZMO_DIR) \
-			-s MODULARIZE=1 \
-			-s EXPORT_NAME=gizmo \
-			-s BINARYEN_TRAP_MODE=clamp \
-			-s STRICT=1 \
-			-s ALLOW_MEMORY_GROWTH=1 \
+			-sMODULARIZE=1 \
+			-sEXPORT_NAME=gizmo \
+			-sSTRICT=1 \
+			-sALLOW_MEMORY_GROWTH=1 \
 			-g \
-			-s DEMANGLE_SUPPORT=1 \
-			-s DISABLE_EXCEPTION_CATCHING=0 \
+			-sDISABLE_EXCEPTION_CATCHING=0 \
 
 LDFLAGS += \
 		   -O3 \
-		   -s WASM=1 \
 		   --bind \
-		   -s MODULARIZE=1 \
-		   -s EXPORT_NAME=gizmo \
-		   -s BINARYEN_TRAP_MODE=clamp \
-		   -s STRICT=1 \
-		   -s ALLOW_MEMORY_GROWTH=1 \
+		   -sMODULARIZE=1 \
+		   -sEXPORT_NAME=gizmo \
+		   -sSTRICT=1 \
+		   -sALLOW_MEMORY_GROWTH=1 \
 		   -g \
-		   -s DEMANGLE_SUPPORT=1 \
-		   -s DISABLE_EXCEPTION_CATCHING=0 \
+		   -sDISABLE_EXCEPTION_CATCHING=0 \
 
 
 ######################
@@ -56,6 +51,7 @@ LDFLAGS += \
 ######################
 
 SHARED_SOURCES = \
+		  $(GIZMO_DIR)/match/wordmatcher.cpp \
 		  $(GIZMO_DIR)/text/translator.cpp \
 		  $(GIZMO_DIR)/text/dictionary.cpp \
 		  $(GIZMO_DIR)/text/words.cpp \
@@ -104,8 +100,6 @@ clean-all: clean clean-deps
 
 $(EXTRACTOR_OBJECTS): CXXFLAGS += \
 	-I$(DEPS_DIR)/include \
-	-I$(DEPS_DIR)/include/sphinxbase \
-	-I$(DEPS_DIR)/include/pocketsphinx \
 	-DTRACK_EXCEPTIONS \
 
 $(EXTRACTOR_TARGET): LDFLAGS += \
@@ -121,10 +115,9 @@ $(EXTRACTOR_TARGET): LDFLAGS += \
 	-lswscale \
 	-lavutil \
 	-lpocketsphinx \
-	-lsphinxbase \
-	-s FORCE_FILESYSTEM=1 \
-	-s 'EXTRA_EXPORTED_RUNTIME_METHODS=["FS"]' \
-	-s FETCH=1 \
+	-sFORCE_FILESYSTEM=1 \
+	-sEXPORTED_RUNTIME_METHODS=FS \
+	-sFETCH=1 \
 
 $(EXTRACTOR_OBJECTS): $(EXTRACTOR_DEPS)
 $(OBJ_DIR)/%.o: %.cpp
@@ -147,22 +140,20 @@ $(CORRELATOR_TARGET): $(CORRELATOR_OBJECTS) $(SHARED_OBJECTS)
 ############################
 
 .ONESHELL:
-$(DEPS_DIR)/lib/libsphinxbase.a:
-	cd $(MODUELS_DIR)/sphinxbase
-	echo "SUBDIRS = libsphinxbase" > src/Makefile.am
-	emconfigure ./autogen.sh --without-python --prefix=$(DEPS_DIR)
-	emmake make -j4 install
-
-.ONESHELL:
-$(DEPS_DIR)/lib/libpocketsphinx.a: $(DEPS_DIR)/lib/libsphinxbase.a
-	cd $(MODUELS_DIR)/pocketsphinx
-	echo "SUBDIRS = libpocketsphinx" > src/Makefile.am
-	emconfigure ./autogen.sh --without-python --prefix=$(DEPS_DIR)
-	emmake make -j4 install
+$(DEPS_DIR)/lib/libpocketsphinx.a:
+	emcmake cmake \
+		-S $(NATIVE_DIR)/pocketsphinx \
+		-B $(POCKET_BUILD) \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=$(DEPS_DIR) \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DBUILD_TESTING=OFF
+	cmake --build $(POCKET_BUILD) --parallel 4
+	cmake --install $(POCKET_BUILD)
 
 .ONESHELL:
 $(DEPS_DIR)/lib/libavcodec.a:
-	cd $(MODUELS_DIR)/ffmpeg
+	cd $(NATIVE_DIR)/ffmpeg
 	emconfigure ./configure \
 		--prefix=$(DEPS_DIR) \
 		--disable-debug \
@@ -183,9 +174,6 @@ $(DEPS_DIR)/lib/libavcodec.a:
 	emmake make -j4 install
 
 clean-deps:
-	cd $(MODUELS_DIR)/sphinxbase && make clean
-	cd $(MODUELS_DIR)/pocketsphinx && make clean
-	cd $(MODUELS_DIR)/ffmpeg && make clean
-	$(RM) -r $(DEPS_DIR)
+	$(RM) -r $(DEPS_DIR) $(POCKET_BUILD)
 
 .PHONY: all clean clean-all clean-deps

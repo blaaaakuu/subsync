@@ -1,0 +1,62 @@
+[build-system]
+requires = [
+    "scikit-build-core>=1.0.3,<2",
+    "pybind11>=3.0.4,<4",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "subsync"
+version = "0.18.0.dev0"
+description = "Subtitle Speech Synchronizer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Michał Szymaniak", email = "sc0typl@gmail.com" },
+]
+dependencies = [
+    "certifi>=2026.7.22",
+    "cryptography>=49.0.0,<50",
+    "pysubs2>=1.8.1,<2",
+    "PyYAML>=6.0.3,<7",
+    "requests>=2.34.2,<3",
+]
+
+[project.optional-dependencies]
+gui = [
+    "wxPython>=4.2.5,<5",
+]
+dev = [
+    "build>=1.5.0,<2",
+    "pytest>=9.1.1,<10",
+    "ruff>=0.16.0,<1",
+]
+
+[project.scripts]
+subsync-cmd = "subsync.__main__:subsync"
+
+[project.gui-scripts]
+subsync = "subsync.__main__:subsync"
+
+[project.urls]
+Homepage = "https://github.com/sc0ty/subsync"
+Repository = "https://github.com/sc0ty/subsync"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+cmake.version = ">=3.25"
+wheel.packages = ["subsync"]
+sdist.include = [
+    "CMakeLists.txt",
+    "gizmo/**",
+    "subsync/**",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100

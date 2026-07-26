@@ -21,7 +21,9 @@ class Correlator
 				double   minCorrelation = 0.0,
 				float    maxDistance    = HUGE_VALF,
 				unsigned minPointsNo    = 0,
-				float    minWordsSim    = 0.5);
+				float    minWordsSim    = 0.5,
+				const std::string &matchingBackend = "auto",
+				unsigned gpuMinBatch = 8192);
 
 		~Correlator();
 
@@ -33,6 +35,7 @@ class Correlator
 
 		bool isRunning() const;
 		float getProgress() const;
+		const char *getMatchingBackend() const;
 
 		void pushSubWord(const Word &word);
 		void pushRefWord(const Word &word);
