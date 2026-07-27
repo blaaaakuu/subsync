@@ -55,6 +55,11 @@ Median is typical latency; p95 exposes slower outliers. CPU usually wins for
 small candidate batches because a GPU launch has fixed overhead. SubSync's
 automatic backend currently switches at 8,192 candidates.
 
+This package benchmarks only the word matcher. It does not contain the GUI,
+FFmpeg subtitle/audio pipeline, PocketSphinx speech recognition, language
+assets, or subtitle writer. Use the full portable application ZIP for
+end-to-end synchronization tests.
+
 Licensing
 ---------
 

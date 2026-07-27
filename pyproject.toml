@@ -41,8 +41,11 @@ subsync-cmd = "subsync.__main__:subsync"
 subsync = "subsync.__main__:subsync"
 
 [project.urls]
-Homepage = "https://github.com/sc0ty/subsync"
-Repository = "https://github.com/sc0ty/subsync"
+Homepage = "https://github.com/blaaaakuu/subsync"
+Repository = "https://github.com/blaaaakuu/subsync"
+Releases = "https://github.com/blaaaakuu/subsync/releases"
+Documentation = "https://github.com/blaaaakuu/subsync/tree/master/doc"
+Upstream = "https://github.com/sc0ty/subsync"
 
 [tool.scikit-build]
 minimum-version = "build-system.requires"

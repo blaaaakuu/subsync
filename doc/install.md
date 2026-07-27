@@ -5,13 +5,26 @@ supported baseline is:
 
 - Python 3.10 or newer;
 - a C++17 compiler and CMake 3.25 or newer;
-- FFmpeg 6.1 development libraries;
+- FFmpeg 6.1 development libraries, built with `iconv` when encoded text
+  subtitles are supported;
 - PocketSphinx 5.1 or newer within the 5.x API line;
 - pkg-config (or pkgconf) so CMake can locate FFmpeg and PocketSphinx.
 
 The Python dependencies are declared in `pyproject.toml`. `requirements.txt`
 contains the same runtime-only dependency set for tools that still consume a
 requirements file.
+
+## Prebuilt Windows preview
+
+Most Windows testers do not need a build environment. The
+[0.18.0 GPU Preview](https://github.com/blaaaakuu/subsync/releases/tag/0.18.0-dev.0)
+contains the complete x64 GUI/CLI application, its native dependencies, the
+English speech model, and CPU/CUDA/OpenCL matchers.
+
+Extract the whole ZIP and run `subsync.exe`. CUDA and OpenCL SDKs are not
+required on the target machine, but the corresponding vendor driver/runtime
+must be installed to use a GPU. See the [user guide](usage.md) for operation
+and troubleshooting.
 
 ## CPU build
 
@@ -116,10 +129,31 @@ On Windows, a package manager such as vcpkg can provide the native libraries.
 Configure `PKG_CONFIG_PATH` to point at the selected vcpkg triplet's
 `lib/pkgconfig` directory before invoking `pip`.
 
+The portable manifest explicitly enables FFmpeg's `iconv` feature. SubSync
+detects a text subtitle's encoding and supplies it to FFmpeg; an FFmpeg build
+without `iconv` returns `ENOSYS` when opening that decoder context.
+
 This source line deliberately targets FFmpeg 6.1 ABI versions. FFmpeg 7 and 8
 removed legacy channel-layout fields still used by the media pipeline; moving
 to them requires a separate decoder/resampler API migration rather than an
 unsafe version-only bump.
+
+### Windows native prerequisites
+
+The full accelerated package has been validated with:
+
+- 64-bit Windows 10/11;
+- Visual Studio 2019 Build Tools with the C++ desktop workload and Windows SDK;
+- CMake 4.x (the project baseline remains 3.25);
+- Python 3.13 x64;
+- vcpkg with the repository manifest under `tools/full-portable`;
+- NVIDIA CUDA Toolkit 13.3 for the CUDA backend;
+- a vendor driver exposing CUDA and/or OpenCL for runtime tests.
+
+`nvcc --version` alone does not prove that a Visual Studio generator can find
+CUDA's MSBuild integration. Pass the toolkit explicitly through
+`-T "cuda=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.3"` when
+automatic toolset discovery fails.
 
 ## Tests
 
@@ -206,16 +240,25 @@ powershell -NoProfile -ExecutionPolicy Bypass `
   -File tools/package-windows-full-portable.ps1
 ```
 
-This workflow pins FFmpeg 6.1.1 through a vcpkg manifest, builds PocketSphinx
-5.1.1, creates an isolated Python 3.13 environment, builds the CUDA/OpenCL
-`gizmo` extension, and freezes `subsync.exe` and `subsync-cmd.exe` with
-PyInstaller. It also includes the FFmpeg/PocketSphinx/OpenCL runtime DLLs and a
-ready-to-use English speech model.
+This workflow pins FFmpeg 6.1.1 with `iconv` through a vcpkg manifest, builds
+PocketSphinx 5.1.1, creates an isolated Python 3.13 environment, builds the
+CUDA/OpenCL `gizmo` extension, and freezes `subsync.exe` and
+`subsync-cmd.exe` with PyInstaller. It also includes the
+FFmpeg/PocketSphinx/OpenCL/iconv runtime DLLs, third-party notices, the matcher
+benchmark, and a ready-to-use English speech model.
 
 The output is `dist/subsync-<version>-portable-win-x64.zip`. Extract the whole
 directory and run `subsync.exe`; settings and downloaded assets remain inside
 that directory. Target machines need 64-bit Windows 10 or 11. GPU SDKs are not
 required, although CUDA and OpenCL still require compatible vendor drivers.
+
+The resulting archive should be tested from a fresh extraction. At minimum:
+
+1. run `subsync-cmd.exe --version`;
+2. construct or open the Settings dialog;
+3. open an encoded SRT file;
+4. perform a subtitle-to-subtitle synchronization and confirm an output file;
+5. run `tools\subsync-matcher-benchmark.exe --backend all`.
 
 ## Web build
 

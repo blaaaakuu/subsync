@@ -1,9 +1,33 @@
-# SubSync GUI translate
-SubSync internalization is done with gettext package, using standarised file formats.
-Translation files are located in `subsync/locale/[LANG]/LC_MESSAGES` directories, containing two files: `messages.po` and `messages.mo`. First one is text file with translations from which second one (binary) is generated.
+# Translating the SubSync GUI
 
-In order to create new translation, just copy one of existing `messages.po`, put it in directory according to language 2-letter code, edit po file e.g. with [Poedit](https://poedit.net) and generate `messages.mo` from it.
+SubSync uses GNU gettext catalogs for user-interface translations. Each
+language lives under:
 
-Language codes are stored in [languages.py](../subsync/data/languages.py). Check if your language is present on `languages2to3`. If not, you may have to add it manually here and also to `languages` dictionary.
+```text
+subsync/locale/[LANG]/LC_MESSAGES/
+  messages.po
+  messages.mo
+```
 
-If you managed to translate SubSync to different language, please create pull request, or share `messages.po` with me.
+`messages.po` is the editable source catalog. `messages.mo` is the compiled
+catalog loaded at runtime.
+
+## Add or update a translation
+
+1. Copy the closest existing `messages.po` into a directory named with the
+   language's two-letter code.
+2. Edit the catalog with a gettext-aware tool such as
+   [Poedit](https://poedit.net).
+3. Compile or export `messages.mo` beside the source catalog.
+4. Start SubSync, select the language in Settings, and restart the application
+   to verify the result.
+5. Check dialogs at typical Windows display scaling so translated labels are
+   not clipped.
+
+Language metadata is defined in
+[`subsync/data/languages.py`](../subsync/data/languages.py). Add a missing
+two-letter/three-letter mapping there before using the language in assets or
+the GUI.
+
+When contributing a translation, include both the reviewed `.po` file and its
+compiled `.mo` output in the pull request.

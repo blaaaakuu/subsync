@@ -4,7 +4,8 @@ SubSync Portable - Windows x64
 This is the complete portable SubSync application. It includes the graphical
 interface, command-line interface, embedded Python runtime, FFmpeg media
 libraries, PocketSphinx speech recognizer, CUDA/OpenCL word matchers, and an
-English speech model.
+English speech model. FFmpeg includes iconv support for encoded text
+subtitles.
 
 Start the application
 ---------------------
@@ -52,7 +53,12 @@ Troubleshooting
 ---------------
 
 Run subsync-cmd.exe --version first. If the GUI does not open, run the command
-line executable from Command Prompt so startup errors remain visible.
+line executable from Command Prompt and enable a log for the failing task:
+
+  subsync-cmd.exe --loglevel=DEBUG --logfile=subsync-debug.log ...
+
+If an encoded subtitle cannot be opened, confirm that _internal\iconv-2.dll is
+present. Keep the complete extracted directory together.
 
 Licensing
 ---------
