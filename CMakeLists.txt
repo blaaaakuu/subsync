@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.25)
 
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+	message(FATAL_ERROR
+		"In-source builds are disabled. Configure a dedicated build directory, "
+		"for example: cmake -S . -B build/local")
+endif()
+
 project(subsync VERSION 0.18.0 LANGUAGES CXX)
 
 option(SUBSYNC_ENABLE_CUDA "Build the CUDA word matching backend" OFF)
