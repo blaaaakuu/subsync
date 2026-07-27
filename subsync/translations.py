@@ -8,6 +8,28 @@ logger = logging.getLogger(__name__)
 initialized = False
 
 
+languageNames = {
+    'de': 'German (Deutsch)',
+    'en': 'English',
+    'es': 'Spanish (Español)',
+    'fr': 'French (Français)',
+    'ja': 'Japanese (日本語)',
+    'pl': 'Polish (Polski)',
+    'ru': 'Russian (Русский)',
+    'zh-cn': 'Chinese, Simplified (简体中文)',
+}
+
+
+def normalizeLanguage(language):
+    if not language:
+        return language
+
+    language = language.lower().replace('_', '-')
+    if language in ('zh', 'zh-cn', 'zh-hans'):
+        return 'zh-cn'
+    return language.split('-', 1)[0]
+
+
 def init():
     import gettext
     gettext.install('messages', localedir=config.localedir)
@@ -17,13 +39,14 @@ def init():
 def setLanguage(language):
     import gettext, locale, importlib
     try:
-        lang = language
+        lang = normalizeLanguage(language)
         if lang is None:
-            lang = locale.getdefaultlocale()[0].split('_', 1)[0]
+            localeName = locale.getdefaultlocale()[0]
+            lang = normalizeLanguage(localeName)
 
         logger.info('changing translation language to %s', lang)
 
-        if lang == 'en':
+        if not lang or lang == 'en':
             gettext.install('messages', localedir=config.localedir)
 
         else:
@@ -57,6 +80,12 @@ def listLanguages():
         langs.append('en')
 
     return langs
+
+
+def languageName(language):
+    language = normalizeLanguage(language)
+    return languageNames.get(language, language)
+
 
 def _(msg):
     if initialized:

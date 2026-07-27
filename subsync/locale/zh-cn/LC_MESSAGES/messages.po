@@ -1,0 +1,1592 @@
+# SubSync user interface translation.
+# Initial machine-generated catalog; corrections are welcome.
+msgid ""
+msgstr "Project-Id-Version: subsync\nLanguage: zh-cn\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nX-Generator: SubSync catalog bootstrap\n"
+
+#: subsync/gui/layout/batchwin.py:389
+msgid "&About"
+msgstr "&关于"
+
+#: subsync/gui/layout/batchwin.py:314
+msgid "&Add files (auto sort)"
+msgstr "&添加文件（自动排序）"
+
+#: subsync/gui/layout/batchwin.py:342
+msgid "&Close"
+msgstr "&关闭"
+
+#: subsync/gui/layout/batchwin.py:386
+msgid "&Edit"
+msgstr "&编辑"
+
+#: subsync/gui/layout/batchwin.py:336
+msgid "&Export list"
+msgstr "&导出列表"
+
+#: subsync/gui/layout/batchwin.py:346
+msgid "&File"
+msgstr "&文件"
+
+#: subsync/gui/layout/batchwin.py:392
+msgid "&Help"
+msgstr "&帮助"
+
+#: subsync/gui/layout/batchwin.py:332
+msgid "&Import list"
+msgstr "&导入列表"
+
+#: subsync/gui/components/batchlist/batchlist.py:42
+msgid "&Language"
+msgstr "&语言"
+
+#: subsync/gui/layout/batchwin.py:308
+msgid "&New"
+msgstr "&新"
+
+#: subsync/gui/components/batchlist/batchlist.py:59
+msgid "&Properties"
+msgstr "&属性"
+
+#: subsync/gui/layout/batchwin.py:381
+msgid "&Propeties"
+msgstr "&属性"
+
+#: subsync/gui/components/batchlist/batchlist.py:53 subsync/gui/layout/batchwin.py:353
+msgid "&Remove"
+msgstr "&删除"
+
+#: subsync/gui/components/batchlist/outputcell.py:90
+msgid ", {} points"
+msgstr ", {} 点"
+
+#: subsync/gui/layout/syncwin.py:137 subsync/gui/layout/syncwin.py:147 subsync/gui/layout/syncwin.py:157 subsync/gui/layout/syncwin.py:167
+msgid "-"
+msgstr "-"
+
+#: subsync/data/descriptions.py:82
+msgid "0 for auto."
+msgstr "0 表示自动。"
+
+#: subsync/gui/layout/batchwin.py:163
+msgid "0.50"
+msgstr "0.50"
+
+#: subsync/utils.py:75
+msgid "1 minute"
+msgstr "1分钟"
+
+#: subsync/gui/layout/batchwin.py:145 subsync/gui/layout/mainwin.py:75
+msgid "999 min"
+msgstr "999 分钟"
+
+#: subsync/gui/charencwin.py:8 subsync/gui/langwin.py:8
+msgid "<auto>"
+msgstr "<自动>"
+
+#: subsync/gui/streamselwin.py:51
+msgid "<empty>"
+msgstr "<空>"
+
+#: subsync/gui/components/choicelang.py:38
+msgid "<other>"
+msgstr "<其他>"
+
+#: subsync/gui/streamselwin.py:41
+msgid "<undefined>"
+msgstr "<未定义>"
+
+#: subsync/gui/layout/errorwin.py:50 subsync/gui/layout/syncwin.py:69
+msgid "[details]"
+msgstr "[详情]"
+
+#: subsync/gui/layout/batchlistitem.py:57
+msgid "[errors]"
+msgstr "[错误]"
+
+#: subsync/gui/layout/syncwin.py:175
+msgid "[hide]"
+msgstr "[隐藏]"
+
+#: subsync/gui/layout/syncwin.py:106
+msgid "[show more]"
+msgstr "[显示更多]"
+
+#: subsync/gui/layout/aboutwin.py:21 subsync/gui/layout/mainwin.py:110
+msgid "About"
+msgstr "关于"
+
+#: subsync/gui/layout/batchwin.py:52
+msgid "Add"
+msgstr "添加"
+
+#: subsync/gui/layout/batchwin.py:326
+msgid "Add &folder"
+msgstr "添加&文件夹"
+
+#: subsync/gui/layout/batchwin.py:322
+msgid "Add &references"
+msgstr "添加&参考文件"
+
+#: subsync/gui/layout/batchwin.py:318
+msgid "Add &subtitles"
+msgstr "添加&字幕"
+
+#: subsync/gui/layout/outpatternwin.py:97
+msgid "Advanced SSA"
+msgstr "高级SSA"
+
+#: subsync/data/languages.py:21
+msgid "Albanian"
+msgstr "阿尔巴尼亚语"
+
+#: subsync/gui/layout/settingswin.py:278
+msgid "all"
+msgstr "全部"
+
+#: subsync/gui/layout/channelswin.py:40 subsync/synchro/channels.py:78
+msgid "all channels"
+msgstr "所有频道"
+
+#: subsync/gui/batchwin.py:271 subsync/gui/batchwin.py:361 subsync/gui/batchwin.py:370 subsync/gui/openwin.py:25 subsync/gui/syncwin.py:204 subsync/gui/syncwin.py:272
+msgid "All files"
+msgstr "所有文件"
+
+#: subsync/gui/batchwin.py:268 subsync/gui/openwin.py:22
+msgid "All supported files"
+msgstr "所有支持的文件"
+
+#: subsync/gui/components/batchlist/batchlist.py:224
+msgid "and {} more"
+msgstr "以及 {} 更多"
+
+#: subsync/assets/listupdater.py:26
+msgid "Another update in progress"
+msgstr "另一个更新正在进行中"
+
+#: subsync/gui/layout/outpatternwin.py:79 subsync/gui/layout/settingswin.py:69
+msgid "append 2-letters language code (ISO 639-1)"
+msgstr "附加 2 个字母的语言代码 (ISO 639-1)"
+
+#: subsync/gui/layout/outpatternwin.py:75 subsync/gui/layout/settingswin.py:75
+msgid "append 3-letters language code (ISO 639-2/B)"
+msgstr "附加 3 个字母的语言代码 (ISO 639-2/B)"
+
+#: subsync/gui/layout/outpatternwin.py:82
+msgid "append stream number"
+msgstr "附加流编号"
+
+#: subsync/assets/item.py:248
+msgid "Application upgrade"
+msgstr "应用升级"
+
+#: subsync/data/languages.py:22
+msgid "Arabic"
+msgstr "阿拉伯语"
+
+#: subsync/gui/outpatternwin.py:160
+msgid "Are you sure you want to overwrite output files if they exist?"
+msgstr "您确定要覆盖输出文件（如果存在）吗？"
+
+#: subsync/gui/settingswin.py:183
+msgid "Are you sure you want to reset settings to defaults?"
+msgstr "您确定要将设置重置为默认值吗？"
+
+#: subsync/gui/layout/settingswin.py:91
+msgid "ask for update on exit"
+msgstr "退出时要求更新"
+
+#: subsync/assets/downloader.py:175
+msgid "Asset installation failed"
+msgstr "资产安装失败"
+
+#: subsync/gui/components/batchlist/batchlist.py:51 subsync/gui/layout/batchwin.py:349
+msgid "Au&to sort"
+msgstr "Au&进行排序"
+
+#: subsync/gui/layout/streamselwin.py:48
+msgid "audio"
+msgstr "音频"
+
+#: subsync/gui/components/batchlist/batchlist.py:47
+msgid "Audio &channels"
+msgstr "音频&通道"
+
+#: subsync/gui/layout/channelswin.py:21
+msgid "Audio channels"
+msgstr "音频通道"
+
+#: subsync/gui/layout/openwin.py:94
+msgid "Audio channels:"
+msgstr "音频频道："
+
+#: subsync/gui/components/batchlist/inputcell.py:29 subsync/gui/layout/settingswin.py:236 subsync/gui/layout/streamselwin.py:48 subsync/gui/streamselwin.py:38 subsync/gui/streamselwin.py:47 subsync/synchro/channels.py:65
+msgid "auto"
+msgstr "汽车"
+
+#: subsync/gui/components/choiceenc.py:8
+msgid "Auto detect"
+msgstr "自动检测"
+
+#: subsync/gui/layout/channelswin.py:37
+msgid "auto select"
+msgstr "自动选择"
+
+#: subsync/gui/layout/batchwin.py:78
+msgid "Auto sort"
+msgstr "自动排序"
+
+#: subsync/gui/layout/batchwin.py:24
+msgid "Batch Processing"
+msgstr "批处理"
+
+#: subsync/gui/layout/mainwin.py:97
+msgid "Batch processing"
+msgstr "批量处理"
+
+#: subsync/data/languages.py:23
+msgid "Belarusian"
+msgstr "白俄罗斯语"
+
+#: subsync/data/languages.py:24
+msgid "Bulgarian"
+msgstr "保加利亚语"
+
+#: subsync/subtitle.py:68
+msgid "Can't save subtitle file"
+msgstr "无法保存字幕文件"
+
+#: subsync/gui/busydlg.py:38 subsync/gui/layout/channelswin.py:66 subsync/gui/layout/downloadwin.py:57 subsync/gui/layout/fpswin.py:70 subsync/gui/layout/openwin.py:128 subsync/gui/layout/outpatternwin.py:298 subsync/gui/layout/settingswin.py:333 subsync/gui/layout/streamselwin.py:110
+msgid "Cancel"
+msgstr "取消"
+
+#: subsync/settings.py:151
+msgid "Cannot load settings file, {}"
+msgstr "无法加载设置文件，{}"
+
+#: subsync/data/languages.py:25
+msgid "Catalan"
+msgstr "加泰罗尼亚语"
+
+#: subsync/gui/components/batchlist/batchlist.py:44
+msgid "Character &encoding"
+msgstr "字符&编码"
+
+#: subsync/gui/charencwin.py:15
+msgid "Character encoding"
+msgstr "字符编码"
+
+#: subsync/gui/layout/openwin.py:82
+msgid "Character encoding:"
+msgstr "字符编码："
+
+#: subsync/gui/layout/mainwin.py:105
+msgid "Check for updates"
+msgstr "检查更新"
+
+#: subsync/gui/mainwin.py:188
+msgid "Checking for update..."
+msgstr "正在检查更新..."
+
+#: subsync/data/languages.py:26
+msgid "Chinese"
+msgstr "中文"
+
+#: subsync/gui/layout/aboutwin.py:97 subsync/gui/layout/batchwin.py:279 subsync/gui/layout/mainwin.py:117 subsync/gui/layout/syncwin.py:230
+msgid "Close"
+msgstr "关闭"
+
+#: subsync/gui/layout/settingswin.py:107
+msgid "confirm file overwrite (in batch mode)"
+msgstr "确认文件覆盖（批处理模式）"
+
+#: subsync/gui/layout/syncwin.py:142
+msgid "correlation:"
+msgstr "相关性："
+
+#: subsync/gui/errorwin.py:100
+msgid "Couldn't save synchronized subtitles"
+msgstr "无法保存同步字幕"
+
+#: subsync/gui/components/batchlist/outputcell.py:125
+msgid "couldn't synchronize"
+msgstr "无法同步"
+
+#: subsync/gui/syncwin.py:106
+msgid "Couldn't synchronize"
+msgstr "无法同步"
+
+#: subsync/gui/layout/aboutwin.py:88
+msgid "Credits"
+msgstr "制作人员"
+
+#: subsync/gui/layout/settingswin.py:278
+msgid "critical"
+msgstr "批评的"
+
+#: subsync/data/languages.py:40
+msgid "Croatian"
+msgstr "克罗地亚语"
+
+#: subsync/gui/layout/batchwin.py:245
+msgid "Current file:"
+msgstr "当前文件："
+
+#: subsync/gui/layout/aboutwin.py:55
+msgid "custom build"
+msgstr "定制构建"
+
+#: subsync/gui/layout/outpatternwin.py:109
+msgid "custom names:"
+msgstr "自定义名称："
+
+#: subsync/gui/layout/channelswin.py:43
+msgid "custom selection"
+msgstr "定制选择"
+
+#: subsync/gui/layout/fpswin.py:50
+msgid "custom value:"
+msgstr "自定义值："
+
+#: subsync/data/languages.py:27
+msgid "Czech"
+msgstr "捷克语"
+
+#: subsync/data/languages.py:28
+msgid "Danish"
+msgstr "丹麦语"
+
+#: subsync/gui/layout/settingswin.py:278
+msgid "debug"
+msgstr "调试"
+
+#: subsync/gui/layout/settingswin.py:322 subsync/gui/layout/syncwin.py:202
+msgid "Debug"
+msgstr "调试"
+
+#: subsync/cmdargs.py:243
+msgid "Debug options:"
+msgstr "调试选项："
+
+#: subsync/gui/components/choicelang.py:47
+msgid "default"
+msgstr "默认"
+
+#: subsync/data/descriptions.py:59
+msgid "define synchronization task, can be repeated multiple times"
+msgstr "定义同步任务，可以重复多次"
+
+#: subsync/gui/components/streamlist.py:12
+msgid "description"
+msgstr "描述"
+
+#: subsync/assets/item.py:163
+msgid "dictionary {} / {}"
+msgstr "字典 {} / {}"
+
+#: subsync/gui/layout/outpatternwin.py:247
+msgid "directory path"
+msgstr "目录路径"
+
+#: subsync/data/descriptions.py:49
+msgid "display this help text and exit"
+msgstr "显示此帮助文本并退出"
+
+#: subsync/data/descriptions.py:50
+msgid "display version information and exit"
+msgstr "显示版本信息并退出"
+
+#: subsync/gui/batchwin.py:345
+msgid "Do you want to clear all items?"
+msgstr "您想清除所有项目吗？"
+
+#: subsync/data/descriptions.py:55
+msgid "don't attempt to contact remote server to get missing assets"
+msgstr "不要尝试联系远程服务器来获取丢失的资产"
+
+#: subsync/gui/components/popups.py:26
+msgid "don't show this message again"
+msgstr "不再显示此消息"
+
+#: subsync/gui/components/batchlist/outputcell.py:111
+msgid "done"
+msgstr "完成"
+
+#: subsync/gui/layout/downloadwin.py:34
+msgid "Download"
+msgstr "下载"
+
+#: subsync/gui/components/assetsdlg.py:47
+msgid "Download assets"
+msgstr "下载资源"
+
+#: subsync/gui/components/assetsdlg.py:46
+msgid "Download now?"
+msgstr "现在下载？"
+
+#: subsync/gui/layout/settingswin.py:84
+msgid "download updates automatically"
+msgstr "自动下载更新"
+
+#: subsync/gui/downloadwin.py:45
+msgid "downloading"
+msgstr "下载"
+
+#: subsync/gui/layout/downloadwin.py:21
+msgid "Downloading"
+msgstr "正在下载"
+
+#: subsync/gui/components/assetsdlg.py:38
+msgid "Downloading assets list..."
+msgstr "正在下载资产列表..."
+
+#: subsync/gui/layout/batchwin.py:92
+msgid "Drop files here to add sorted"
+msgstr "将文件拖放到此处以添加已排序的文件"
+
+#: subsync/gui/components/batchlist/inputcell.py:41
+msgid "drop here"
+msgstr "放到这里"
+
+#: subsync/gui/layout/syncwin.py:220
+msgid "Dump all synchronization points"
+msgstr "转储所有同步点"
+
+#: subsync/data/descriptions.py:95
+msgid "dump logs to specified file"
+msgstr "将日志转储到指定文件"
+
+#: subsync/gui/layout/syncwin.py:215
+msgid "Dump reference words"
+msgstr "转储参考词"
+
+#: subsync/gui/layout/syncwin.py:212
+msgid "Dump subtitle words"
+msgstr "转储字幕词"
+
+#: subsync/gui/layout/syncwin.py:223
+msgid "Dump used synchronization points"
+msgstr "转储使用的同步点"
+
+#: subsync/data/descriptions.py:96
+msgid "dump words to file, or to standard output if there is no PATH, SRC is one of:  "
+msgstr "将单词转储到文件，如果没有 PATH，则转储到标准输出，SRC 是以下之一：  "
+
+#: subsync/data/languages.py:29
+msgid "Dutch"
+msgstr "荷兰语"
+
+#: subsync/gui/layout/batchwin.py:200
+msgid "Edit all tasks"
+msgstr "编辑所有任务"
+
+#: subsync/gui/layout/batchwin.py:197
+msgid "Edit failed tasks"
+msgstr "编辑失败的任务"
+
+#: subsync/gui/layout/batchwin.py:150
+msgid "Effort:"
+msgstr "努力："
+
+#: subsync/gui/layout/syncwin.py:132
+msgid "elapsed time:"
+msgstr "经过时间："
+
+#: subsync/gui/batchwin.py:232
+msgid "Elapsed:"
+msgstr "已过去："
+
+#: subsync/gui/layout/settingswin.py:265
+msgid "enable advanced debug options"
+msgstr "启用高级调试选项"
+
+#: subsync/gui/layout/syncwin.py:207
+msgid "Enable save button"
+msgstr "启用保存按钮"
+
+#: subsync/data/languages.py:30
+msgid "English"
+msgstr "英语"
+
+#: subsync/gui/components/batchlist/outputcell.py:136 subsync/gui/errorwin.py:34 subsync/gui/layout/errorwin.py:21 subsync/gui/layout/errorwin.py:43 subsync/gui/syncwin.py:200
+msgid "Error"
+msgstr "错误"
+
+#: subsync/gui/layout/settingswin.py:278
+msgid "error"
+msgstr "错误"
+
+#: subsync/gui/errorwin.py:98
+msgid "Error during reference read"
+msgstr "参考读取时出错"
+
+#: subsync/gui/errorwin.py:93
+msgid "Error during subtitles read"
+msgstr "读取字幕时出错"
+
+#: subsync/data/languages.py:31
+msgid "Estonian"
+msgstr "爱沙尼亚语"
+
+#: subsync/gui/batchwin.py:236
+msgid "ETA:"
+msgstr "预计到达时间："
+
+#: subsync/gui/batchwin.py:150
+msgid "Everything synchronized successfully"
+msgstr "一切同步成功"
+
+#: subsync/gui/batchwin.py:148
+msgid "Everything synchronized, but got errors"
+msgstr "一切同步，但出现错误"
+
+#: subsync/gui/layout/settingswin.py:225
+msgid "Extractor jobs no:"
+msgstr "提取器作业编号："
+
+#: subsync/data/languages.py:32
+msgid "Faroese"
+msgstr "法罗语"
+
+#: subsync/gui/layout/outpatternwin.py:228
+msgid "file name (without path and extension)"
+msgstr "文件名（不带路径和扩展名）"
+
+#: subsync/gui/layout/outpatternwin.py:63
+msgid "File name:"
+msgstr "文件名："
+
+#: subsync/gui/layout/outpatternwin.py:85
+msgid "File type:"
+msgstr "文件类型："
+
+#: subsync/gui/layout/streamselwin.py:87
+msgid "files with matching streams"
+msgstr "具有匹配流的文件"
+
+#: subsync/gui/layout/streamselwin.py:95
+msgid "files without matching streams"
+msgstr "没有匹配流的文件"
+
+#: subsync/gui/layout/settingswin.py:310
+msgid "Filter out logs from modules (one per line):"
+msgstr "从模块中过滤掉日志（每行一个）："
+
+#: subsync/data/languages.py:33
+msgid "Finnish"
+msgstr "芬兰语"
+
+#: subsync/data/descriptions.py:35
+msgid "Fix output subtitle timestamps by given offset, in seconds."
+msgstr "按给定偏移量（以秒为单位）修复输出字幕时间戳。"
+
+#: subsync/gui/components/assetsdlg.py:55
+msgid "Following assets could be updated:"
+msgstr "可以更新以下资产："
+
+#: subsync/gui/components/assetsdlg.py:44
+msgid "Following assets must be download to continue:"
+msgstr "必须下载以下资源才能继续："
+
+#: subsync/gui/components/batchlist/batchlist.py:221
+msgid "Following files could not be added:"
+msgstr "无法添加以下文件："
+
+#: subsync/gui/layout/syncwin.py:152
+msgid "formula:"
+msgstr "公式："
+
+#: subsync/gui/fpswin.py:40
+msgid "fps"
+msgstr "帧率"
+
+#: subsync/gui/layout/fpswin.py:22
+msgid "FPS"
+msgstr "FPS"
+
+#: subsync/data/languages.py:34
+msgid "French"
+msgstr "法语"
+
+#: subsync/data/languages.py:36
+msgid "Gaelic"
+msgstr "盖尔语"
+
+#: subsync/data/languages.py:37
+msgid "Galician"
+msgstr "加利西亚语"
+
+#: subsync/gui/layout/settingswin.py:115
+msgid "General"
+msgstr "一般"
+
+#: subsync/cmdargs.py:189
+msgid "General options:"
+msgstr "一般选项："
+
+#: subsync/data/languages.py:35
+msgid "German"
+msgstr "德语"
+
+#: subsync/gui/batchwin.py:143
+msgid "Got errors, synchronization failed"
+msgstr "出现错误，同步失败"
+
+#: subsync/gui/settingswin.py:135
+msgid "GPU minimum batch:"
+msgstr "GPU 最小批量大小："
+
+#: subsync/data/languages.py:38
+msgid "Greek"
+msgstr "希腊语"
+
+#: subsync/cmdargs.py:199
+msgid "GUI options:"
+msgstr "图形用户界面选项："
+
+#: subsync/cmdargs.py:194
+msgid "Headless options:"
+msgstr "无头选项："
+
+#: subsync/data/languages.py:39
+msgid "Hebrew"
+msgstr "希伯来语"
+
+#: subsync/data/descriptions.py:7
+msgid "How hard should I work to synchronize subtitles. Higher value will result with better synchronization, but it will take longer."
+msgstr "我应该多努力才能同步字幕。值越高，同步效果越好，但需要的时间更长。"
+
+#: subsync/data/descriptions.py:79
+msgid "how hard to try (0.0 - 1.0)"
+msgstr "尝试的难度 (0.0 - 1.0)"
+
+#: subsync/data/languages.py:41
+msgid "Hungarian"
+msgstr "匈牙利语"
+
+#: subsync/data/languages.py:42
+msgid "Icelandic"
+msgstr "冰岛语"
+
+#: subsync/gui/components/streamlist.py:9
+msgid "id"
+msgstr "编号"
+
+#: subsync/gui/layout/outpatternwin.py:271
+msgid "if <field> is not set, append <value>"
+msgstr "如果未设置 <field>，则附加 <value>"
+
+#: subsync/gui/layout/outpatternwin.py:259
+msgid "if <field> is set, append <value>"
+msgstr "如果设置了 <field>，则附加 <value>"
+
+#: subsync/data/descriptions.py:78
+msgid "import list of tasks from YAML file"
+msgstr "从 YAML 文件导入任务列表"
+
+#: subsync/data/descriptions.py:83
+msgid "In seconds."
+msgstr "几秒钟之内。"
+
+#: subsync/data/languages.py:43
+msgid "Indonesian"
+msgstr "印度尼西亚语"
+
+#: subsync/gui/components/popups.py:15
+msgid "Info"
+msgstr "信息"
+
+#: subsync/gui/layout/settingswin.py:278
+msgid "info"
+msgstr "信息"
+
+#: subsync/gui/layout/syncwin.py:188
+msgid "Initial synchronization is done.\nYou could save subtitles already.\nIf they don't match, wait for a better result."
+msgstr "初始同步已完成。\n您已经可以保存字幕了。\n如果不匹配，请等待更好的结果。"
+
+#: subsync/gui/batchwin.py:117 subsync/gui/layout/syncwin.py:34
+msgid "Initializing..."
+msgstr "正在初始化..."
+
+#: subsync/gui/layout/openwin.py:37
+msgid "Input file:"
+msgstr "输入文件："
+
+#: subsync/validator.py:21
+msgid "Invalid output pattern"
+msgstr "无效的输出模式"
+
+#: subsync/synchro/output.py:135
+msgid "Invalid output pattern, invalid keyword: {}"
+msgstr "输出模式无效，关键字无效：{}"
+
+#: subsync/synchro/output.py:139
+msgid "Invalid output pattern, {}"
+msgstr "输出模式无效，{}"
+
+#: subsync/synchro/speech.py:42
+msgid "Invalid speech audio format"
+msgstr "语音音频格式无效"
+
+#: subsync/data/languages.py:44
+msgid "Italian"
+msgstr "意大利语"
+
+#: subsync/data/languages.py:45
+msgid "Japanese"
+msgstr "日语"
+
+#: subsync/data/languages.py:46
+msgid "Korean"
+msgstr "韩语"
+
+#: subsync/data/descriptions.py:10
+msgid "Langauge selection is not mandatory, but could drastically improve synchronization accuracy.\nAre you sure?"
+msgstr "语言选择不是强制性的，但可以大大提高同步精度。\n你确定吗？"
+
+#: subsync/gui/components/batchlist/inputcell.py:32 subsync/gui/components/streamlist.py:10
+msgid "language"
+msgstr "语言"
+
+#: subsync/gui/mainwin.py:115
+msgid "Language changes will take effect after application restart"
+msgstr "语言更改将在应用程序重新启动后生效"
+
+#: subsync/gui/layout/settingswin.py:100
+msgid "language not selected"
+msgstr "未选择语言"
+
+#: subsync/gui/layout/batchwin.py:114 subsync/gui/layout/openwin.py:72 subsync/gui/layout/settingswin.py:44
+msgid "Language:"
+msgstr "语言："
+
+#: subsync/gui/langwin.py:14
+msgid "Languages"
+msgstr "语言"
+
+#: subsync/data/languages.py:47
+msgid "Latin"
+msgstr "拉丁语"
+
+#: subsync/data/languages.py:48
+msgid "Latvian"
+msgstr "拉脱维亚语"
+
+#: subsync/utils.py:69
+msgid "less than minute"
+msgstr "不到一分钟"
+
+#: subsync/gui/layout/aboutwin.py:85
+msgid "License"
+msgstr "许可证"
+
+#: subsync/data/languages.py:49
+msgid "Lithuanian"
+msgstr "立陶宛语"
+
+#: subsync/gui/components/batchlist/batchlist.py:217 subsync/gui/openwin.py:33
+msgid "Loading, please wait..."
+msgstr "正在加载，请稍等..."
+
+#: subsync/gui/layout/settingswin.py:292
+msgid "log to file"
+msgstr "记录到文件"
+
+#: subsync/gui/layout/settingswin.py:273
+msgid "Logging level:"
+msgstr "日志记录级别："
+
+#: subsync/data/languages.py:51
+msgid "Malagasy"
+msgstr "马达加斯加语"
+
+#: subsync/data/languages.py:50
+msgid "Malay"
+msgstr "马来语"
+
+#: subsync/data/languages.py:52
+msgid "Maltese"
+msgstr "马耳他语"
+
+#: subsync/gui/settingswin.py:117
+msgid "Matching backend:"
+msgstr "匹配后端："
+
+#: subsync/data/descriptions.py:4
+msgid "Max adjustement. Subtitle time will be changed no more than this value. Higher value will result in longer synchronization, but if you set this too low, synchronization will fail."
+msgstr "最大调整。字幕时间的更改不会超过此值。较高的值将导致较长的同步时间，但如果将此值设置得太低，同步将会失败。"
+
+#: subsync/gui/layout/batchwin.py:132 subsync/gui/layout/mainwin.py:62
+msgid "Max adjustment:"
+msgstr "最大调整："
+
+#: subsync/gui/layout/syncwin.py:162
+msgid "max change:"
+msgstr "最大变化："
+
+#: subsync/gui/layout/settingswin.py:121
+msgid "Max points distance:"
+msgstr "最大点距离："
+
+#: subsync/data/descriptions.py:17
+msgid "Maximum acceptable synchronization error, in seconds. Synchronization points with error greater than this will be discarded."
+msgstr "可接受的最大同步误差（以秒为单位）。误差大于此的同步点将被丢弃。"
+
+#: subsync/gui/layout/mainwin.py:93
+msgid "Menu"
+msgstr "菜单"
+
+#: subsync/gui/layout/settingswin.py:183
+msgid "Min correlation factor:"
+msgstr "最小相关系数："
+
+#: subsync/gui/layout/settingswin.py:143
+msgid "Min points no:"
+msgstr "最小点数："
+
+#: subsync/gui/layout/settingswin.py:197
+msgid "Min speech recognition score:"
+msgstr "最低语音识别分数："
+
+#: subsync/gui/layout/settingswin.py:156
+msgid "Min word length (letters):"
+msgstr "最小字长（字母）："
+
+#: subsync/gui/layout/settingswin.py:169
+msgid "Min words similarity:"
+msgstr "最小单词相似度："
+
+#: subsync/data/descriptions.py:91
+msgid "minimum candidate count before auto mode uses a GPU"
+msgstr "自动模式使用 GPU 之前的最小候选数"
+
+#: subsync/data/descriptions.py:29
+msgid "Minimum correlation factor, between 0.0 and 1.0. Used to determine synchronization result. If correlation factor is smaller than this, synchronization will fail."
+msgstr "最小相关系数，介于 0.0 和 1.0 之间。用于判断同步结果。如果相关系数小于此值，同步将失败。"
+
+#: subsync/data/descriptions.py:32
+msgid "Minimum speech recognition score, between 0.0 and 1.0. Words transcribed with smaller score will be rejected."
+msgstr "最低语音识别分数，介于 0.0 和 1.0 之间。分数较小的转录单词将被拒绝。"
+
+#: subsync/data/descriptions.py:23
+msgid "Minimum word length, in letters. Shorter words will not be used as synchronization points. Applies only to alphabet-based languages."
+msgstr "最小字长，以字母为单位。较短的单词将不会用作同步点。仅适用于基于字母的语言。"
+
+#: subsync/data/descriptions.py:26
+msgid "Minimum words similarity for synchronization points. Between 0.0 and 1.0."
+msgstr "同步点的最小单词相似度。 0.0 到 1.0 之间。"
+
+#: subsync/data/descriptions.py:20
+msgid "Minumum number of synchronization points. Should not be set too high because it could result with generating large number of false positives."
+msgstr "最小同步点数量。不应设置得太高，因为这可能会导致产生大量误报。"
+
+#: subsync/assets/assetlist.py:70
+msgid "missing assets:"
+msgstr "缺失资产："
+
+#: subsync/gui/components/iconlist.py:7
+msgid "name"
+msgstr "姓名"
+
+#: subsync/gui/layout/batchwin.py:203
+msgid "New synchronization"
+msgstr "新同步"
+
+#: subsync/gui/mainwin.py:197
+msgid "New version is available. Update now?"
+msgstr "新版本可用。现在更新吗？"
+
+#: subsync/gui/components/assetsdlg.py:85
+msgid "No language selected"
+msgstr "未选择语言"
+
+#: subsync/gui/components/assetsdlg.py:73
+msgid "No language selected for:"
+msgstr "未选择语言："
+
+#: subsync/gui/syncwin.py:102
+msgid "No need to synchronize"
+msgstr "无需同步"
+
+#: subsync/data/languages.py:53
+msgid "Norwegian"
+msgstr "挪威语"
+
+#: subsync/synchro/pipeline.py:186
+msgid "Not supported stream type"
+msgstr "不支持的流类型"
+
+#: subsync/data/descriptions.py:38
+msgid "Number of concurrent synchronization threads."
+msgstr "并发同步线程数。"
+
+#: subsync/gui/layout/channelswin.py:69 subsync/gui/layout/errorwin.py:74 subsync/gui/layout/fpswin.py:73 subsync/gui/layout/openwin.py:131 subsync/gui/layout/outpatternwin.py:301 subsync/gui/layout/settingswin.py:336 subsync/gui/layout/streamselwin.py:113
+msgid "OK"
+msgstr "好的"
+
+#: subsync/data/descriptions.py:57
+msgid "open batch processing window"
+msgstr "打开批处理窗口"
+
+#: subsync/gui/downloadwin.py:73
+msgid "operation failed"
+msgstr "操作失败"
+
+#: subsync/gui/downloadwin.py:67
+msgid "operation finished successfully"
+msgstr "操作成功完成"
+
+#: subsync/data/descriptions.py:76
+msgid "output character encoding"
+msgstr "输出字符编码"
+
+#: subsync/gui/layout/outpatternwin.py:41
+msgid "Output directory:"
+msgstr "输出目录："
+
+#: subsync/gui/layout/settingswin.py:54
+msgid "Output encoding:"
+msgstr "输出编码："
+
+#: subsync/gui/layout/outpatternwin.py:21
+msgid "Output file names"
+msgstr "输出文件名"
+
+#: subsync/validator.py:12
+msgid "Output file not set"
+msgstr "输出文件未设置"
+
+#: subsync/data/descriptions.py:74
+msgid "output file path or pattern"
+msgstr "输出文件路径或模式"
+
+#: subsync/gui/layout/settingswin.py:64
+msgid "Output filename:"
+msgstr "输出文件名："
+
+#: subsync/data/descriptions.py:75
+msgid "output framerate (for FPS-based subtitles)"
+msgstr "输出帧率（对于基于 FPS 的字幕）"
+
+#: subsync/gui/layout/settingswin.py:211
+msgid "Output timing offset:"
+msgstr "输出时序偏移："
+
+#: subsync/gui/components/batchlist/batchlist.py:39
+msgid "outputs"
+msgstr "输出"
+
+#: subsync/data/descriptions.py:80
+msgid "overwrite existing files"
+msgstr "覆盖现有文件"
+
+#: subsync/gui/layout/outpatternwin.py:288
+msgid "Overwrite existing files"
+msgstr "覆盖现有文件"
+
+#: subsync/gui/outpatternwin.py:161
+msgid "Overwrite files?"
+msgstr "覆盖文件？"
+
+#: subsync/data/descriptions.py:66
+msgid "path to reference file"
+msgstr "参考文件的路径"
+
+#: subsync/data/descriptions.py:60
+msgid "path to subtitle file"
+msgstr "字幕文件路径"
+
+#: subsync/gui/layout/outpatternwin.py:123
+msgid "pattern:"
+msgstr "图案："
+
+#: subsync/data/languages.py:54
+msgid "Persian"
+msgstr "波斯语"
+
+#: subsync/data/languages.py:55
+msgid "Polish"
+msgstr "波兰语"
+
+#: subsync/data/languages.py:56
+msgid "Portuguese"
+msgstr "葡萄牙语"
+
+#: subsync/gui/layout/outpatternwin.py:32
+msgid "predefined names:"
+msgstr "预定义名称："
+
+#: subsync/gui/layout/settingswin.py:126
+msgid "Prevent from going to sleep during synchronization"
+msgstr "防止同步期间进入睡眠状态"
+
+#: subsync/data/descriptions.py:41
+msgid "Prevents system from going to sleep during synchronization.\nIt could not work on all platforms."
+msgstr "防止系统在同步期间进入睡眠状态。\n它无法在所有平台上运行。"
+
+#: subsync/gui/layout/downloadwin.py:45
+msgid "processing..."
+msgstr "处理..."
+
+#: subsync/gui/components/batchlist/outputcell.py:79
+msgid "queued..."
+msgstr "排队..."
+
+#: subsync/data/descriptions.py:73
+msgid "reference audio channels mapping (for audio references)"
+msgstr "参考音频通道映射（用于音频参考）"
+
+#: subsync/data/descriptions.py:71
+msgid "reference character encoding (for subtitle references)"
+msgstr "参考字符编码（用于字幕参考）"
+
+#: subsync/validator.py:10
+msgid "Reference file not set"
+msgstr "未设置参考文件"
+
+#: subsync/data/descriptions.py:72
+msgid "reference framerate"
+msgstr "参考帧率"
+
+#: subsync/data/descriptions.py:70
+msgid "reference language (2- or 3-letter ISO code)"
+msgstr "参考语言（2 个或 3 个字母的 ISO 代码）"
+
+#: subsync/data/descriptions.py:67
+msgid "reference stream no"
+msgstr "参考流编号"
+
+#: subsync/gui/components/batchlist/batchlist.py:38
+msgid "references"
+msgstr "参考文件"
+
+#: subsync/gui/layout/mainwin.py:48
+msgid "References (video or other subtitles):"
+msgstr "参考文件（视频或其他字幕）："
+
+#: subsync/gui/components/assetsdlg.py:80
+msgid "references: "
+msgstr "参考文件： "
+
+#: subsync/gui/layout/batchwin.py:57
+msgid "Remove"
+msgstr "删除"
+
+#: subsync/gui/batchwin.py:346
+msgid "Remove items"
+msgstr "删除项目"
+
+#: subsync/gui/layout/settingswin.py:330 subsync/gui/settingswin.py:184
+msgid "Restore defaults"
+msgstr "恢复默认设置"
+
+#: subsync/data/languages.py:57
+msgid "Romanian"
+msgstr "罗马尼亚语"
+
+#: subsync/data/descriptions.py:53
+msgid "run in headless mode (without GUI)"
+msgstr "以无头模式运行（无 GUI）"
+
+#: subsync/data/languages.py:58
+msgid "Russian"
+msgstr "俄语"
+
+#: subsync/gui/layout/fpswin.py:43 subsync/gui/layout/outpatternwin.py:50 subsync/gui/layout/outpatternwin.py:72 subsync/gui/settingswin.py:13
+msgid "same as input subtitles"
+msgstr "与输入字幕相同"
+
+#: subsync/gui/layout/fpswin.py:40 subsync/gui/layout/outpatternwin.py:46 subsync/gui/layout/outpatternwin.py:68
+msgid "same as reference file"
+msgstr "与参考文件相同"
+
+#: subsync/gui/layout/syncwin.py:238
+msgid "Save"
+msgstr "保存"
+
+#: subsync/gui/layout/openwin.py:110
+msgid "Select"
+msgstr "选择"
+
+#: subsync/gui/layout/batchwin.py:360
+msgid "Select &all"
+msgstr "选择&全部"
+
+#: subsync/gui/components/batchlist/batchlist.py:57
+msgid "Select &stream"
+msgstr "选择&流"
+
+#: subsync/gui/layout/batchwin.py:366
+msgid "Select all &references"
+msgstr "选择所有&参考文件"
+
+#: subsync/gui/layout/batchwin.py:363
+msgid "Select all &subtitles"
+msgstr "选择所有&字幕"
+
+#: subsync/gui/layout/batchwin.py:369
+msgid "Select all o&utputs"
+msgstr "选择所有&输出"
+
+#: subsync/gui/layout/channelswin.py:32
+msgid "Select audio channels to listen to:"
+msgstr "选择要收听的音频通道："
+
+#: subsync/gui/charencwin.py:14
+msgid "Select character encoding"
+msgstr "选择字符编码"
+
+#: subsync/gui/layout/outpatternwin.py:53
+msgid "select custom folder"
+msgstr "选择自定义文件夹"
+
+#: subsync/gui/batchwin.py:355
+msgid "Select directory"
+msgstr "选择目录"
+
+#: subsync/gui/components/filedlg.py:14 subsync/gui/components/filedlg.py:50
+msgid "Select file"
+msgstr "选择文件"
+
+#: subsync/gui/langwin.py:14
+msgid "Select language"
+msgstr "选择语言"
+
+#: subsync/gui/layout/batchwin.py:71
+msgid "Select output"
+msgstr "选择输出"
+
+#: subsync/gui/outpatternwin.py:39
+msgid "Select output directory"
+msgstr "选择输出目录"
+
+#: subsync/gui/layout/fpswin.py:33
+msgid "Select output subtitles framerate:"
+msgstr "选择输出字幕帧率："
+
+#: subsync/validator.py:16
+msgid "Select reference language first"
+msgstr "首先选择参考语言"
+
+#: subsync/data/descriptions.py:69
+msgid "select reference stream by language (3-letter ISO code)"
+msgstr "按语言选择参考流（3 个字母的 ISO 代码）"
+
+#: subsync/data/descriptions.py:68
+msgid "select reference stream by type"
+msgstr "按类型选择参考流"
+
+#: subsync/gui/layout/batchwin.py:64 subsync/gui/layout/openwin.py:24
+msgid "Select stream"
+msgstr "选择流"
+
+#: subsync/gui/layout/streamselwin.py:53
+msgid "Select stream by language:"
+msgstr "按语言选择流："
+
+#: subsync/gui/layout/streamselwin.py:63
+msgid "Select stream by title:"
+msgstr "按标题选择流："
+
+#: subsync/gui/layout/streamselwin.py:43
+msgid "Select stream by type:"
+msgstr "按类型选择流："
+
+#: subsync/gui/layout/openwin.py:59
+msgid "Select stream:"
+msgstr "选择流："
+
+#: subsync/gui/layout/streamselwin.py:23
+msgid "Select streams"
+msgstr "选择流"
+
+#: subsync/data/descriptions.py:62
+msgid "select subtitle stream by language (3-letter ISO code)"
+msgstr "按语言选择字幕流（3个字母的ISO代码）"
+
+#: subsync/data/languages.py:62
+msgid "Serbian"
+msgstr "塞尔维亚语"
+
+#: subsync/gui/layout/batchwin.py:374
+msgid "Set &input stream"
+msgstr "设置&输入流"
+
+#: subsync/gui/layout/batchwin.py:378
+msgid "Set &output location"
+msgstr "设置&输出位置"
+
+#: subsync/data/descriptions.py:94
+msgid "set logging level"
+msgstr "设置日志记录级别"
+
+#: subsync/gui/layout/mainwin.py:102 subsync/gui/layout/settingswin.py:24 subsync/gui/mainwin.py:116
+msgid "Settings"
+msgstr "设置"
+
+#: subsync/gui/layout/settingswin.py:95
+msgid "Show popups:"
+msgstr "显示弹出窗口："
+
+#: subsync/assets/downloader.py:166
+msgid "Signature verification failed"
+msgstr "签名验证失败"
+
+#: subsync/data/languages.py:59
+msgid "Slovak"
+msgstr "斯洛伐克语"
+
+#: subsync/data/languages.py:60
+msgid "Slovenian"
+msgstr "斯洛文尼亚语"
+
+#: subsync/gui/errorwin.py:96
+msgid "Some reference subtitles can't be decoded (invalid encoding?)"
+msgstr "某些参考字幕无法解码（编码无效？）"
+
+#: subsync/gui/errorwin.py:91
+msgid "Some subtitles can't be decoded (invalid encoding?)"
+msgstr "某些字幕无法解码（编码无效？）"
+
+#: subsync/gui/batchwin.py:145
+msgid "Some tasks couldn't be synchronized"
+msgstr "部分任务无法同步"
+
+#: subsync/data/languages.py:61
+msgid "Spanish"
+msgstr "西班牙语"
+
+#: subsync/gui/layout/batchwin.py:287 subsync/gui/layout/mainwin.py:120
+msgid "Start"
+msgstr "开始"
+
+#: subsync/gui/layout/batchwin.py:223
+msgid "Status:"
+msgstr "状态："
+
+#: subsync/gui/layout/batchwin.py:282 subsync/gui/layout/syncwin.py:235
+msgid "Stop"
+msgstr "停止"
+
+#: subsync/gui/components/batchlist/inputcell.py:24
+msgid "stream"
+msgstr "流"
+
+#: subsync/gui/layout/outpatternwin.py:94
+msgid "Sub Station Alpha"
+msgstr "阿尔法分站"
+
+#: subsync/gui/layout/outpatternwin.py:90
+msgid "SubRIP"
+msgstr "子RIP"
+
+#: subsync/gui/layout/aboutwin.py:48
+msgid "Subtitle\nSpeech\nSynchronizer"
+msgstr "副标题\n演讲\n同步器"
+
+#: subsync/data/descriptions.py:64
+msgid "subtitle character encoding"
+msgstr "字幕字符编码"
+
+#: subsync/gui/batchwin.py:269 subsync/gui/openwin.py:23
+msgid "Subtitle files"
+msgstr "字幕文件"
+
+#: subsync/data/descriptions.py:65
+msgid "subtitle framerate (for FPS-based subtitles)"
+msgstr "字幕帧率（对于基于 FPS 的字幕）"
+
+#: subsync/data/descriptions.py:63
+msgid "subtitle language (2- or 3-letter ISO code)"
+msgstr "字幕语言（2 个或 3 个字母的 ISO 代码）"
+
+#: subsync/gui/layout/mainwin.py:24
+msgid "Subtitle Speech Synchronizer"
+msgstr "字幕语音同步器"
+
+#: subsync/data/descriptions.py:61
+msgid "subtitle stream no"
+msgstr "字幕流编号"
+
+#: subsync/gui/layout/outpatternwin.py:209
+msgid "subtitle/reference 2-letters language code"
+msgstr "字幕/参考 2 字母语言代码"
+
+#: subsync/gui/layout/outpatternwin.py:190
+msgid "subtitle/reference 3-letters language code"
+msgstr "字幕/参考 3 字母语言代码"
+
+#: subsync/gui/layout/outpatternwin.py:152
+msgid "subtitle/reference file full path"
+msgstr "字幕/参考文件完整路径"
+
+#: subsync/gui/layout/outpatternwin.py:171
+msgid "subtitle/reference stream number"
+msgstr "字幕/参考流编号"
+
+#: subsync/gui/layout/streamselwin.py:48
+msgid "subtitle/text"
+msgstr "字幕/文字"
+
+#: subsync/gui/components/batchlist/batchlist.py:37
+msgid "subtitles"
+msgstr "字幕"
+
+#: subsync/validator.py:14
+msgid "Subtitles can't be the same as reference"
+msgstr "字幕不能与参考内容相同"
+
+#: subsync/validator.py:8
+msgid "Subtitles not set"
+msgstr "未设置字幕"
+
+#: subsync/gui/syncwin.py:100
+msgid "Subtitles synchronized"
+msgstr "字幕已同步"
+
+#: subsync/gui/layout/mainwin.py:40
+msgid "Subtitles:"
+msgstr "字幕："
+
+#: subsync/gui/components/assetsdlg.py:77
+msgid "subtitles: "
+msgstr "字幕： "
+
+#: subsync/data/languages.py:63
+msgid "Swedish"
+msgstr "瑞典语"
+
+#: subsync/gui/layout/settingswin.py:257 subsync/gui/layout/syncwin.py:21
+msgid "Synchronization"
+msgstr "同步"
+
+#: subsync/assets/assetlist.py:67
+msgid "Synchronization between languages {} is currently not supported."
+msgstr "当前不支持语言 {} 之间的同步。"
+
+#: subsync/cmdargs.py:202
+msgid "Synchronization job:"
+msgstr "同步作业："
+
+#: subsync/cmdargs.py:226
+msgid "Synchronization options:"
+msgstr "同步选项："
+
+#: subsync/gui/batchwin.py:138
+msgid "Synchronization terminated"
+msgstr "同步终止"
+
+#: subsync/assets/assetlist.py:63
+msgid "Synchronization with {} audio is currently not supported."
+msgstr "目前不支持与 {} 音频同步。"
+
+#: subsync/gui/layout/syncwin.py:101
+msgid "Synchronization: 0 points"
+msgstr "同步：0分"
+
+#: subsync/gui/syncwin.py:69
+msgid "Synchronization: {} points"
+msgstr "同步：{} 点"
+
+#: subsync/gui/components/batchlist/outputcell.py:99
+msgid "synchronizing"
+msgstr "同步化"
+
+#: subsync/gui/syncwin.py:62
+msgid "Synchronizing..."
+msgstr "正在同步..."
+
+#: subsync/gui/batchwin.py:230
+msgid "Task:"
+msgstr "任务："
+
+#: subsync/gui/components/batchlist/outputcell.py:123
+msgid "terminated"
+msgstr "终止"
+
+#: subsync/gui/batchwin.py:332 subsync/gui/syncwin.py:153
+msgid "Terminating, please wait..."
+msgstr "正在终止，请稍候..."
+
+#: subsync/gui/batchwin.py:100
+msgid "Terminating..."
+msgstr "终止..."
+
+#: subsync/gui/components/batchlist/batchlist.py:210 subsync/gui/openwin.py:72
+msgid "There are no usable streams"
+msgstr "没有可用的流"
+
+#: subsync/synchro/dictionary.py:39
+msgid "There is no dictionary for transaltion from {} to {}"
+msgstr "没有用于从 {} 到 {} 转换的字典"
+
+#: subsync/synchro/input.py:132
+msgid "There is no matching stream in {}"
+msgstr "{} 中没有匹配的流"
+
+#: subsync/synchro/speech.py:19
+msgid "There is no speech recognition model for language {}"
+msgstr "没有语言 {} 的语音识别模型"
+
+#: subsync/gui/layout/aboutwin.py:69
+msgid "This is an automatic movie subtitle synchronization tool.\nSynchronization is done by listening to the audio track, translating it if necessary.\nIt could also use another subtitle as a reference.\n\nAuthor: Michał Szymaniak"
+msgstr "这是一个自动电影字幕同步工具。\n同步是通过收听音轨来完成的，必要时进行翻译。\n它还可以使用另一个字幕作为参考。\n\n作者：米哈乌·西马尼亚克"
+
+#: subsync/gui/batchwin.py:141
+msgid "Total failure"
+msgstr "彻底失败"
+
+#: subsync/gui/layout/batchwin.py:254
+msgid "Total progress:"
+msgstr "总进度："
+
+#: subsync/data/languages.py:64
+msgid "Turkish"
+msgstr "土耳其语"
+
+#: subsync/gui/components/streamlist.py:11
+msgid "type"
+msgstr "类型"
+
+#: subsync/data/languages.py:65
+msgid "Ukrainian"
+msgstr "乌克兰语"
+
+#: subsync/gui/errorwin.py:102
+msgid "Unexpected error occurred"
+msgstr "发生意外错误"
+
+#: subsync/subtitle.py:62
+msgid "Unknown file extension"
+msgstr "未知的文件扩展名"
+
+#: subsync/gui/components/assetsdlg.py:58
+msgid "Update assets"
+msgstr "更新资产"
+
+#: subsync/assets/item.py:274
+msgid "Update instalation failed miserably"
+msgstr "更新安装严重失败"
+
+#: subsync/gui/downloadwin.py:23
+msgid "Update not available"
+msgstr "更新不可用"
+
+#: subsync/gui/components/assetsdlg.py:57
+msgid "Update now?"
+msgstr "现在更新吗？"
+
+#: subsync/gui/layout/settingswin.py:79
+msgid "Updates:"
+msgstr "更新："
+
+#: subsync/gui/mainwin.py:134 subsync/gui/mainwin.py:198
+msgid "Upgrade"
+msgstr "升级"
+
+#: subsync/cmdargs.py:18
+msgid "Usage: {} [OPTIONS]"
+msgstr "用法：{} [选项]"
+
+#: subsync/data/descriptions.py:51
+msgid "user interface language (2-letter ISO code)"
+msgstr "用户界面语言（2 个字母的 ISO 代码）"
+
+#: subsync/data/descriptions.py:54
+msgid "verbosity level (0 - 3)"
+msgstr "详细级别 (0 - 3)"
+
+#: subsync/gui/aboutwin.py:13
+msgid "version "
+msgstr "版本 "
+
+#: subsync/gui/batchwin.py:270 subsync/gui/openwin.py:24
+msgid "Video files"
+msgstr "视频文件"
+
+#: subsync/gui/layout/settingswin.py:278
+msgid "warning"
+msgstr "警告"
+
+#: subsync/gui/layout/aboutwin.py:91
+msgid "Website"
+msgstr "网站"
+
+#: subsync/data/descriptions.py:90
+msgid "word matching backend; auto selects an available GPU for large batches"
+msgstr "词匹配后端；自动为大批量选择可用的 GPU"
+
+#: subsync/gui/mainwin.py:133
+msgid "Your version is up to date"
+msgstr "您的版本是最新的"
+
+#: subsync/gui/layout/outpatternwin.py:252
+msgid "{if:<field>:<value>}"
+msgstr "{if:<field>:<value>}"
+
+#: subsync/gui/layout/outpatternwin.py:264
+msgid "{if_not:<field>:<value>}"
+msgstr "{if_not:<field>:<value>}"
+
+#: subsync/gui/layout/outpatternwin.py:240
+msgid "{ref_dir}"
+msgstr "{ref_dir}"
+
+#: subsync/gui/layout/outpatternwin.py:202
+msgid "{ref_lang2}"
+msgstr "{ref_lang2}"
+
+#: subsync/gui/layout/outpatternwin.py:183
+msgid "{ref_lang}"
+msgstr "{ref_lang}"
+
+#: subsync/gui/layout/outpatternwin.py:221
+msgid "{ref_name}"
+msgstr "{ref_name}"
+
+#: subsync/gui/layout/outpatternwin.py:164
+msgid "{ref_no}"
+msgstr "{ref_no}"
+
+#: subsync/gui/layout/outpatternwin.py:145
+msgid "{ref_path}"
+msgstr "{ref_path}"
+
+#: subsync/gui/layout/outpatternwin.py:233
+msgid "{sub_dir}"
+msgstr "{sub_dir}"
+
+#: subsync/gui/layout/outpatternwin.py:195
+msgid "{sub_lang2}"
+msgstr "{sub_lang2}"
+
+#: subsync/gui/layout/outpatternwin.py:176
+msgid "{sub_lang}"
+msgstr "{sub_lang}"
+
+#: subsync/gui/layout/outpatternwin.py:214
+msgid "{sub_name}"
+msgstr "{sub_name}"
+
+#: subsync/gui/layout/outpatternwin.py:157
+msgid "{sub_no}"
+msgstr "{sub_no}"
+
+#: subsync/gui/layout/outpatternwin.py:138
+msgid "{sub_path}"
+msgstr "{sub_path}"
+
+#: subsync/utils.py:66
+msgid "{} hours"
+msgstr "{} 小时"
+
+#: subsync/gui/batchwin.py:242 subsync/gui/mainwin.py:92
+msgid "{} min"
+msgstr "{} 分钟"
+
+#: subsync/utils.py:77
+msgid "{} minutes"
+msgstr "{} 分钟"
+
+#: subsync/assets/item.py:212
+msgid "{} speech recognition model"
+msgstr "{} 语音识别模型"
